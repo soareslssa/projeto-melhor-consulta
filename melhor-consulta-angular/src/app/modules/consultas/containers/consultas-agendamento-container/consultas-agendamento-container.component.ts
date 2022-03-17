@@ -3,10 +3,7 @@ import { FormControl } from '@angular/forms';
 import { map } from 'rxjs';
 import { startWith } from 'rxjs';
 import { Observable } from 'rxjs';
-
-export interface Especialidade {
-  name: string;
-}
+import { Especialidade } from 'src/app/models/especialidade';
 
 @Component({
   selector: 'app-consultas-agendamento-container',
@@ -16,7 +13,7 @@ export interface Especialidade {
 export class ConsultasAgendamentoContainerComponent implements OnInit {
 
   myControl = new FormControl();
-  options: Especialidade[] = [{name: 'Cardiologia'}, {name: 'Psicologia'}, {name: 'Psiquiatria'}];
+  options: Especialidade[] = [{nome: 'Cardiologia'}, {nome: 'Psicologia'}, {nome: 'Psiquiatria'}];
   filteredOptions!: Observable<Especialidade[]>;
 
   ngOnInit() {
@@ -28,13 +25,13 @@ export class ConsultasAgendamentoContainerComponent implements OnInit {
   }
 
   displayFn(esp: Especialidade): string {
-    return esp && esp.name ? esp.name : '';
+    return esp && esp.nome ? esp.nome : '';
   }
 
   private _filter(name: string): Especialidade[] {
     const filterValue = name.toLowerCase();
 
-    return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
+    return this.options.filter(option => option.nome.toLowerCase().includes(filterValue));
   }
 }
 

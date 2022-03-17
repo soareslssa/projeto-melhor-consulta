@@ -1,9 +1,9 @@
-import { ConsultasComponent } from './consultas/consultas.component';
+import { ConsultasPesquisaContainerComponent } from './containers/consultas-pesquisa-container/consultas-pesquisa-container.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: ConsultasComponent}
+  { path: '', component: ConsultasPesquisaContainerComponent}
 ];
 
 @NgModule({

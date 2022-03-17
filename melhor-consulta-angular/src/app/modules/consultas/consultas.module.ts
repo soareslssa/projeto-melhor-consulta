@@ -8,12 +8,12 @@ import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import { ConsultasPesquisaContainerComponent } from './containers/consultas-pesquisa-container/consultas-pesquisa-container.component';
+import { ConsultasAgendamentoContainerComponent } from './containers/consultas-agendamento-container/consultas-agendamento-container.component';
 
 
 @NgModule({
   declarations: [
-       ConsultasPesquisaContainerComponent
+       ConsultasAgendamentoContainerComponent
   ],
   imports: [
     CommonModule,

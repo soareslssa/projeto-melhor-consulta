@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { map } from 'rxjs';
+import { startWith } from 'rxjs';
+import { Observable } from 'rxjs';
+
+export interface Especialidade {
+  name: string;
+}
 
 @Component({
   selector: 'app-consultas-agendamento-container',
@@ -7,9 +15,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsultasAgendamentoContainerComponent implements OnInit {
 
-  constructor() { }
+  myControl = new FormControl();
+  options: Especialidade[] = [{name: 'Cardiologia'}, {name: 'Psicologia'}, {name: 'Psiquiatria'}];
+  filteredOptions!: Observable<Especialidade[]>;
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => (typeof value === 'string' ? value : value.name)),
+      map(name => (name ? this._filter(name) : this.options.slice())),
+    );
   }
 
+  displayFn(esp: Especialidade): string {
+    return esp && esp.name ? esp.name : '';
+  }
+
+  private _filter(name: string): Especialidade[] {
+    const filterValue = name.toLowerCase();
+
+    return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
+  }
 }
+

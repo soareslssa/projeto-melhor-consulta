@@ -1,3 +1,4 @@
+import { EspecialidadesService } from './../../services/especialidades.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { map } from 'rxjs';
@@ -12,8 +13,13 @@ import { Especialidade } from 'src/app/models/especialidade';
 })
 export class ConsultasAgendamentoContainerComponent implements OnInit {
 
+  constructor(private especialidadeService: EspecialidadesService){
+
+  }
+
+  options: Especialidade[] = this.especialidadeService.list();
+
   myControl = new FormControl();
-  options: Especialidade[] = [{nome: 'Cardiologia'}, {nome: 'Psicologia'}, {nome: 'Psiquiatria'}];
   filteredOptions!: Observable<Especialidade[]>;
 
   ngOnInit() {

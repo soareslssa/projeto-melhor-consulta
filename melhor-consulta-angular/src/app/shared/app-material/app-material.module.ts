@@ -5,7 +5,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -15,7 +15,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatInputModule,
     MatAutocompleteModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule
 
 
   ]

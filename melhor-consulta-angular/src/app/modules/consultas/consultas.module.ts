@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 import { AppMaterialModule } from './../../shared/app-material/app-material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,7 +13,8 @@ import { ConsultasAgendamentoContainerComponent } from './containers/consultas-a
   imports: [
     CommonModule,
     ConsultasRoutingModule,
-    AppMaterialModule
+    AppMaterialModule,
+    SharedModule
   ]
 })
 export class ConsultasModule { }

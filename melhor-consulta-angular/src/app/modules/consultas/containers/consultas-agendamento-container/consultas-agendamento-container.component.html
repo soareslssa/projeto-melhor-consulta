@@ -4,15 +4,21 @@
 
   <mat-card-content>
     <form>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Especialidade</mat-label>
-        <input type="text" matInput (formControl)="myControl" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option.nome}}
-          </mat-option>
+      <mat-form-field>
+        <input  type="text"
+                placeholder="Especialidade"
+                (formControl)="myControl"
+                matInput
+                [matAutocomplete]="auto">
+
+         <mat-autocomplete #auto="matAutocomplete">
+             <mat-option
+                 *ngFor="let option of filteredOptions | async"
+                 [value]="option.nome">
+               {{option.nome}}
+            </mat-option>
         </mat-autocomplete>
-      </mat-form-field>
+     </mat-form-field>
 
       <button mat-raised-button color="primary" style="margin-left: 2%;">
         Buscar agendas

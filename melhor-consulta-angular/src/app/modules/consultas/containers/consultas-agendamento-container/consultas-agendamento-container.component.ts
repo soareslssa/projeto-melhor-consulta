@@ -2,7 +2,7 @@ import { EspecialidadesService } from './../../services/especialidades.service';
 import { Especialidade } from './../../../../models/especialidade';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { map, Observable, startWith } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, Observable, startWith, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-consultas-agendamento-container',
@@ -12,31 +12,33 @@ import { map, Observable, startWith } from 'rxjs';
 
 export class ConsultasAgendamentoContainerComponent implements OnInit {
 
+
+
   myControl = new FormControl();
-  options: Especialidade[] = [];
-  filteredOptions!: Observable<Especialidade[]>;
+  options = [];
+  filteredOptions: Observable<Especialidade[]>;
 
   constructor(private especialidadeService: EspecialidadesService){
-    this.especialidadeService.list().subscribe(options => this.options = options);
-    console.log(this.especialidadeService.list());
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      debounceTime(400),
+      distinctUntilChanged(),
+      switchMap(val => {
+            return this.filter(val || '')
+       })
+    )
   }
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => (typeof value === 'string' ? value : value.name)),
-      map(name => (name ? this._filter(name) : this.options.slice())),
-    );
   }
 
-  displayFn(esp: Especialidade): string {
-    return esp && esp.nome ? esp.nome : '';
-  }
-
-  private _filter(name: string): Especialidade[] {
-    const filterValue = name.toLowerCase();
-
-    return this.options.filter(option => option.nome.toLowerCase().includes(filterValue));
-  }
+  filter(param: string): Observable<Especialidade[]> {
+    return this.especialidadeService.list()
+     .pipe(
+       map(response => response.filter(option => {
+         return option.nome.toLowerCase().indexOf(param.toLowerCase()) === 0
+       }))
+     )
+   }
 }
 

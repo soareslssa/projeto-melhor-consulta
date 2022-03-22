@@ -1,6 +1,9 @@
+import { Especialidade } from 'src/app/models/especialidade';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTable } from '@angular/material/table';
+import { Observable } from 'rxjs';
 import { Consulta } from './../../../models/consulta';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { ConsultasService } from './../../../modules/consultas/services/consultas.service';
 
 @Component({
   selector: 'app-consultas-table',
@@ -8,8 +11,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./consultas-table.component.scss'],
 })
 export class ConsultasTableComponent implements OnInit {
-  displayedColumns: string[] = ['codigo', 'especialidade', 'dtConsulta', 'medico'];
-  dataSource = ELEMENT_DATA;
+  dataSource$: Observable<Consulta[]>;
+
+  displayedColumns: string[] = ['codigo', 'especialidade', 'dtConsulta', 'medico','acoes'];
+
+  @ViewChild(MatTable)
+  tabelaConsultas!: MatTable<any>;
+
+  constructor(private consultasService: ConsultasService){
+    this.dataSource$ = new Observable;
+  }
+
+  pesquisarConsultasPorEspecialidade(espId: number){
+    this.dataSource$ = this.consultasService.listByEspecialidadeId(espId);
+  }
 
   ngOnInit(){
 

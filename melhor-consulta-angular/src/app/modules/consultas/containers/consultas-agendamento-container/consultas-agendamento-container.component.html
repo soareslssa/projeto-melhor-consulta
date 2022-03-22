@@ -14,16 +14,11 @@
          <mat-autocomplete #auto="matAutocomplete">
              <mat-option
                  *ngFor="let option of filteredOptions | async"
-                 [value]="option.nome">
+                 [value]="option.nome" (click)="buscarConsultasPorEspecialidade(option.id)">
                {{option.nome}}
             </mat-option>
         </mat-autocomplete>
      </mat-form-field>
-
-      <button mat-raised-button color="primary" style="margin-left: 2%;">
-        Buscar agendas
-        <mat-icon>search</mat-icon>
-      </button>
     </form>
 
     <app-consultas-table></app-consultas-table>

@@ -1,26 +1,25 @@
 import { EspecialidadesService } from './../../services/especialidades.service';
+import { Especialidade } from './../../../../models/especialidade';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { map } from 'rxjs';
-import { startWith } from 'rxjs';
-import { Observable } from 'rxjs';
-import { Especialidade } from 'src/app/models/especialidade';
+import { map, Observable, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-consultas-agendamento-container',
   templateUrl: './consultas-agendamento-container.component.html',
   styleUrls: ['./consultas-agendamento-container.component.scss']
 })
+
 export class ConsultasAgendamentoContainerComponent implements OnInit {
 
-  constructor(private especialidadeService: EspecialidadesService){
-
-  }
-
-  options: Especialidade[] = this.especialidadeService.list();
-
   myControl = new FormControl();
+  options: Especialidade[] = [];
   filteredOptions!: Observable<Especialidade[]>;
+
+  constructor(private especialidadeService: EspecialidadesService){
+    this.especialidadeService.list().subscribe(options => this.options = options);
+    console.log(this.especialidadeService.list());
+  }
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(

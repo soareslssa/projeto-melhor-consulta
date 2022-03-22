@@ -1,15 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Especialidade } from 'src/app/models/especialidade';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EspecialidadesService {
 
-  constructor(HttpClient: HttpClient) { }
+  private readonly API = 'api/especialidades';
+
+  constructor(private httpClient: HttpClient) { }
 
   list() {
-    return [{nome: 'Cardiologia'}, {nome: 'Psicologia'}, {nome: 'Psiquiatria'}];
+    return this.httpClient.get<Especialidade[]>(this.API);
   }
 }
 

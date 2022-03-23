@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Consulta } from './../../../models/consulta';
 import { ConsultasService } from './../../../modules/consultas/services/consultas.service';
@@ -12,6 +13,8 @@ export class ConsultasTableComponent implements OnInit {
   listaConsultas!: Consulta[];
   dataSource = new MatTableDataSource<Consulta>();
 
+  @ViewChild(MatSort) sort!: MatSort;
+
   displayedColumns: string[] = [
     'codigo',
     'especialidade',
@@ -19,6 +22,10 @@ export class ConsultasTableComponent implements OnInit {
     'medico',
     'agendar',
   ];
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+  }
 
   constructor(private consultasService: ConsultasService) {}
 
@@ -30,6 +37,7 @@ export class ConsultasTableComponent implements OnInit {
   ngOnInit() {
     this.consultasService.list().subscribe((res) => {
       this.dataSource.data = res as Consulta[];
+      console.log(res)
     });
   }
 }

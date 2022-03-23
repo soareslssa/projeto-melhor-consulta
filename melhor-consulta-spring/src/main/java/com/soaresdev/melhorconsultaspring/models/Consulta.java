@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import java.util.Date;
 
 @Entity
 @Data
@@ -19,10 +20,12 @@ public class Consulta {
     private Long id;
     private String codigo;
     private String paciente;
-    private String medico;
+    @OneToOne
+    private Medico medico;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "ESP_ID", referencedColumnName = "ID")
     private Especialidade especialidade;
-    private String dtConsulta;
+    private Date dtConsulta;
     private boolean situacao;
+    private Double valor;
 }

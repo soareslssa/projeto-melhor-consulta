@@ -16,7 +16,6 @@ export class ConsultasService {
   }
 
   listByEspecialidadeId(id: number) {
-    console.log(id);
     return this.httpClient.get<Consulta[]>(`${this.API}/listarPorEspecialidade?espId=${id}`);
   }
 }

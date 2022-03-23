@@ -2,9 +2,10 @@
 <p-table [value]="consultas" responsiveLayout="scroll">
   <ng-template pTemplate="header">
       <tr>
-          <th>Especialidade</th>
-          <th>Data Disponível</th>
+          <th pSortableColumn="especialidade.descricao">Especialidade <p-sortIcon field="especialidade"></p-sortIcon></th>
+          <th pSortableColumn="dtConsulta">Data <p-sortIcon field="dtConsulta"></p-sortIcon></th>
           <th>Médico</th>
+          <th>Estado</th>
           <th>Endereço</th>
           <th>Agendar</th>
       </tr>
@@ -14,6 +15,7 @@
           <td>{{consulta.especialidade.descricao}}</td>
           <td>{{consulta.dtConsulta}}</td>
           <td>{{consulta.medico.nome}}</td>
+          <td>{{consulta.medico.uf}}</td>
           <td>{{consulta.medico.endereco}}</td>
           <td><p-button label="Agendar" icon="pi pi-check" iconPos="right"></p-button></td>
       </tr>

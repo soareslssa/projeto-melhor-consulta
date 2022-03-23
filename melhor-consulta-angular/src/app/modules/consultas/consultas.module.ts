@@ -13,8 +13,8 @@ import { ConsultasAgendamentoContainerComponent } from './containers/consultas-a
   imports: [
     CommonModule,
     ConsultasRoutingModule,
-    AppMaterialModule,
-    SharedModule
+    SharedModule,
+
   ]
 })
 export class ConsultasModule { }

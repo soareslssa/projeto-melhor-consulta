@@ -7,6 +7,6 @@ import { ConsultasTableComponent } from './components/consultas-table/consultas-
 @NgModule({
   declarations: [ConsultasTableComponent],
   imports: [CommonModule, AppPrimengModule, AppMaterialModule],
-  exports: [ConsultasTableComponent],
+  exports: [ConsultasTableComponent, AppMaterialModule, AppPrimengModule],
 })
 export class SharedModule {}

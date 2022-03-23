@@ -37,6 +37,8 @@ public class MelhorConsultaSpringApplication {
 			m1.setCrm("436.167.697-60");
 			m1.setSituacao(true);
 			m1.setEndereco("Travessa A 520");
+			m1.setCep("22710-480");
+			m1.setUf("Rio de Janeiro");
 
 			Medico m2 = new Medico();
 			m2.setNome("Marina Fabiana Assunção");
@@ -48,6 +50,8 @@ public class MelhorConsultaSpringApplication {
 			m2.setCrm("436.167.697-60");
 			m2.setSituacao(true);
 			m2.setEndereco("Rua Caém 330");
+			m2.setCep("22710-480");
+			m2.setUf("Sao Paulo");
 
 			Especialidade e = new Especialidade("Cardiologia",m1,true);
 			Especialidade e2 = new Especialidade("Psiquiatria",m2,true);

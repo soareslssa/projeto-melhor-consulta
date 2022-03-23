@@ -21,6 +21,8 @@ public class Medico {
     private Date dtInicio;
     private Date dtNascimento;
     private String endereco;
+    private String cep;
+    private String uf;
     @OneToMany
     private List<Consulta> consultas;
     private boolean situacao;

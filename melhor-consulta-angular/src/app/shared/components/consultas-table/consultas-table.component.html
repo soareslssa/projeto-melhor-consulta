@@ -1,14 +1,9 @@
 <mat-form-field appearance="standard">
-  <mat-label>Pesquise pelo nome da Especialidade ou médico</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Cardiologia ou Dr. Fulano" #input>
+  <mat-label>Selecione seu estado</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Rio de Janeiro" #input>
 </mat-form-field>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
-
-  <ng-container matColumnDef="codigo">
-    <th mat-header-cell *matHeaderCellDef> Código </th>
-    <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
-  </ng-container>
 
   <ng-container matColumnDef="especialidade">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Especialidade </th>
@@ -25,6 +20,11 @@
   <ng-container matColumnDef="medico">
     <th mat-header-cell *matHeaderCellDef> Médico </th>
     <td mat-cell *matCellDef="let element"> {{element.medico.nome}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="endereco">
+    <th mat-header-cell *matHeaderCellDef> Endereço </th>
+    <td mat-cell *matCellDef="let element"> {{element.medico.endereco}} </td>
   </ng-container>
 
   <ng-container matColumnDef="agendar">

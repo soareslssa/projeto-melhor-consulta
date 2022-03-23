@@ -1,5 +1,4 @@
 import { Consulta } from './consulta';
-import { Especialidade } from 'src/app/models/especialidade';
 export interface Medico {
   id: number,
   nome: string,
@@ -10,6 +9,8 @@ export interface Medico {
   dtInicio: string,
   dtNascimento: string,
   endereco: string,
+  cep: string,
+  uf: string,
   consultas: Consulta[]
   situacao: boolean
 }

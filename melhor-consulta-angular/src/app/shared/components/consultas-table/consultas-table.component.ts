@@ -10,16 +10,16 @@ import { ConsultasService } from './../../../modules/consultas/services/consulta
   styleUrls: ['./consultas-table.component.scss'],
 })
 export class ConsultasTableComponent implements OnInit {
-  listaConsultas!: Consulta[];
+
   dataSource = new MatTableDataSource<Consulta>();
 
   @ViewChild(MatSort) sort!: MatSort;
 
   displayedColumns: string[] = [
-    'codigo',
     'especialidade',
     'dtConsulta',
     'medico',
+    'endereco',
     'agendar',
   ];
 

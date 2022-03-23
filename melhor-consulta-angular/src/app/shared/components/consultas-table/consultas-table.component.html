@@ -1,42 +1,22 @@
-<mat-form-field appearance="standard">
-  <mat-label>Selecione seu estado</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Rio de Janeiro" #input>
-</mat-form-field>
-
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
-
-  <ng-container matColumnDef="especialidade">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Especialidade </th>
-    <td mat-cell *matCellDef="let element"> {{element.especialidade.descricao}} </td>
-  </ng-container>
-
-
-  <ng-container matColumnDef="dtConsulta">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Data Consulta </th>
-    <td mat-cell *matCellDef="let element"> {{element.dtConsulta}} </td>
-  </ng-container>
-
-
-  <ng-container matColumnDef="medico">
-    <th mat-header-cell *matHeaderCellDef> Médico </th>
-    <td mat-cell *matCellDef="let element"> {{element.medico.nome}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="endereco">
-    <th mat-header-cell *matHeaderCellDef> Endereço </th>
-    <td mat-cell *matCellDef="let element"> {{element.medico.endereco}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="agendar">
-    <th mat-header-cell *matHeaderCellDef>Agendar</th>
-    <td mat-cell *matCellDef="let c">
-      <button mat-raised-button color="warn" >
-        Agendar
-        <mat-icon>check</mat-icon>
-      </button>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+<p-card>
+<p-table [value]="consultas" responsiveLayout="scroll">
+  <ng-template pTemplate="header">
+      <tr>
+          <th>Especialidade</th>
+          <th>Data Disponível</th>
+          <th>Médico</th>
+          <th>Endereço</th>
+          <th>Agendar</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-consulta>
+      <tr>
+          <td>{{consulta.especialidade.descricao}}</td>
+          <td>{{consulta.dtConsulta}}</td>
+          <td>{{consulta.medico.nome}}</td>
+          <td>{{consulta.medico.endereco}}</td>
+          <td><p-button label="Agendar" icon="pi pi-check" iconPos="right"></p-button></td>
+      </tr>
+  </ng-template>
+</p-table>
+</p-card>

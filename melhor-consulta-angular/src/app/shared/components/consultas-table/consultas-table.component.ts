@@ -11,33 +11,12 @@ import { ConsultasService } from './../../../modules/consultas/services/consulta
 })
 export class ConsultasTableComponent implements OnInit {
 
-  dataSource = new MatTableDataSource<Consulta>();
+  consultas: Consulta[] = [];
 
-  @ViewChild(MatSort) sort!: MatSort;
 
-  displayedColumns: string[] = [
-    'especialidade',
-    'dtConsulta',
-    'medico',
-    'endereco',
-    'agendar',
-  ];
-
-  ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
+  ngOnInit() {
+      this.consultasService.list().subscribe(data => this.consultas = data);
   }
 
   constructor(private consultasService: ConsultasService) {}
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  ngOnInit() {
-    this.consultasService.list().subscribe((res) => {
-      this.dataSource.data = res as Consulta[];
-      console.log(res)
-    });
-  }
 }

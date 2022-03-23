@@ -3,23 +3,6 @@
   <mat-card-subtitle>Agende consultas sem sair de casa. Fácil, rápido e seguro. </mat-card-subtitle>
 
   <mat-card-content>
-    <form>
-      <mat-form-field>
-        <input  type="text"
-                placeholder="Especialidade"
-                (formControl)="myControl"
-                matInput
-                [matAutocomplete]="auto">
-
-         <mat-autocomplete #auto="matAutocomplete">
-             <mat-option
-                 *ngFor="let option of filteredOptions | async"
-                 [value]="option.nome" (click)="buscarConsultasPorEspecialidade(option.id)">
-               {{option.nome}}
-            </mat-option>
-        </mat-autocomplete>
-     </mat-form-field>
-    </form>
 
     <app-consultas-table></app-consultas-table>
 

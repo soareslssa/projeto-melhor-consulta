@@ -13,40 +13,12 @@ import { debounceTime, distinctUntilChanged, map, Observable, startWith, switchM
 
 export class ConsultasAgendamentoContainerComponent implements OnInit {
 
-
-
-  myControl = new FormControl();
-  options = [];
-  filteredOptions: Observable<Especialidade[]>;
-
-  @ViewChild(ConsultasTableComponent)
-  tabelaConsultas!: ConsultasTableComponent;
-
   constructor(private especialidadeService: EspecialidadesService){
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      debounceTime(400),
-      distinctUntilChanged(),
-      switchMap(val => {
-            return this.filter(val || '')
-       })
-    )
-  }
 
-  buscarConsultasPorEspecialidade(espId: number): void{
-    this.tabelaConsultas.pesquisarConsultasPorEspecialidade(espId)
   }
 
   ngOnInit() {
   }
 
-  filter(param: string): Observable<Especialidade[]> {
-    return this.especialidadeService.list()
-     .pipe(
-       map(response => response.filter(option => {
-         return option.nome.toLowerCase().indexOf(param.toLowerCase()) === 0
-       }))
-     )
-   }
 }
 

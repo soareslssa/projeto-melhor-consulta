@@ -1,7 +1,5 @@
-import { Especialidade } from 'src/app/models/especialidade';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTable } from '@angular/material/table';
-import { Observable } from 'rxjs';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Consulta } from './../../../models/consulta';
 import { ConsultasService } from './../../../modules/consultas/services/consultas.service';
 
@@ -11,46 +9,27 @@ import { ConsultasService } from './../../../modules/consultas/services/consulta
   styleUrls: ['./consultas-table.component.scss'],
 })
 export class ConsultasTableComponent implements OnInit {
-  dataSource$: Observable<Consulta[]>;
+  listaConsultas!: Consulta[];
+  dataSource = new MatTableDataSource<Consulta>();
 
-  displayedColumns: string[] = ['codigo', 'especialidade', 'dtConsulta', 'medico','acoes'];
+  displayedColumns: string[] = [
+    'codigo',
+    'especialidade',
+    'dtConsulta',
+    'medico',
+    'agendar',
+  ];
 
-  @ViewChild(MatTable)
-  tabelaConsultas!: MatTable<any>;
+  constructor(private consultasService: ConsultasService) {}
 
-  constructor(private consultasService: ConsultasService){
-    this.dataSource$ = new Observable;
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  pesquisarConsultasPorEspecialidade(espId: number){
-    this.dataSource$ = this.consultasService.listByEspecialidadeId(espId);
-  }
-
-  ngOnInit(){
-
+  ngOnInit() {
+    this.consultasService.list().subscribe((res) => {
+      this.dataSource.data = res as Consulta[];
+    });
   }
 }
-
-
-
-
-const ELEMENT_DATA: Consulta[] = [
-  {
-    id: 1,
-    codigo: "123",
-    paciente: 0,
-    medico: {id:1, nome: "Dr João Santos"},
-    especialidade: {id:1,nome:"Cardiologia"},
-    dtConsulta: "23-03-2022",
-    situacao: true
-  },
-  {
-    id: 2,
-    codigo: "321",
-    paciente: 0,
-    medico: {id:1, nome: "Dr Marcos Paulo"},
-    especialidade: {id:1,nome:"Cardiologia"},
-    dtConsulta: "23-03-2022",
-    situacao: true
-  }
-];

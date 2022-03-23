@@ -2,18 +2,32 @@
 <p-table [value]="consultas" responsiveLayout="scroll">
   <ng-template pTemplate="header">
       <tr>
-          <th pSortableColumn="especialidade.descricao">Especialidade <p-sortIcon field="especialidade"></p-sortIcon></th>
+          <th>
+            Especialidade
+          </th>
           <th pSortableColumn="dtConsulta">Data <p-sortIcon field="dtConsulta"></p-sortIcon></th>
           <th>Médico</th>
-          <th>Estado</th>
+          <th>Estado
+          </th>
           <th>Endereço</th>
           <th>Agendar</th>
+      </tr>
+      <tr>
+          <th>
+            <p-columnFilter placeholder="Ex. Cardiologia"  type="text" field="especialidade.descricao"></p-columnFilter>
+          </th>
+          <th></th>
+          <th></th>
+          <th>
+          </th>
+          <th></th>
+          <th></th>
       </tr>
   </ng-template>
   <ng-template pTemplate="body" let-consulta>
       <tr>
           <td>{{consulta.especialidade.descricao}}</td>
-          <td>{{consulta.dtConsulta}}</td>
+          <td>{{consulta.dtConsulta | date:'dd/MM/yyyy - HH:mm'}}</td>
           <td>{{consulta.medico.nome}}</td>
           <td>{{consulta.medico.uf}}</td>
           <td>{{consulta.medico.endereco}}</td>

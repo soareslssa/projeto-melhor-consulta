@@ -1,15 +1,11 @@
 <p-card>
-<p-table [value]="consultas" responsiveLayout="scroll">
+<p-table [value]="grades" responsiveLayout="scroll">
   <ng-template pTemplate="header">
       <tr>
-          <th>
-            Especialidade
-          </th>
-          <th pSortableColumn="dtConsulta">Data <p-sortIcon field="dtConsulta"></p-sortIcon></th>
+          <th>Especialidade</th>
           <th>Médico</th>
-          <th>Estado
-          </th>
           <th>Endereço</th>
+          <th>Estado</th>
           <th>Agendar</th>
       </tr>
       <tr>
@@ -19,18 +15,17 @@
           <th></th>
           <th></th>
           <th>
+            <p-columnFilter placeholder="Ex. Rio de Janeiro"  type="text" field="medico.estado"></p-columnFilter>
           </th>
-          <th></th>
           <th></th>
       </tr>
   </ng-template>
   <ng-template pTemplate="body" let-consulta>
       <tr>
           <td>{{consulta.especialidade.descricao}}</td>
-          <td>{{consulta.dtConsulta | date:'dd/MM/yyyy - HH:mm'}}</td>
-          <td>{{consulta.medico.nome}}</td>
-          <td>{{consulta.medico.uf}}</td>
-          <td>{{consulta.medico.endereco}}</td>
+          <td>{{consulta.medico.nomeSocial}}</td>
+          <td>{{consulta.medico.logradouro}} {{consulta.medico.nroLogradouro}}</td>
+          <td>{{consulta.medico.estado}}</td>
           <td><p-button label="Agendar" icon="pi pi-check" iconPos="right"></p-button></td>
       </tr>
   </ng-template>

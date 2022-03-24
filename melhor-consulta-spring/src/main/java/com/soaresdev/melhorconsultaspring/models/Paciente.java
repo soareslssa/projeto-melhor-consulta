@@ -2,18 +2,21 @@ package com.soaresdev.melhorconsultaspring.models;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Data
-public class Medico{
+public class Paciente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nomeSocial;
     private String nome;
     private String sobrenome;
     private String cpf;
@@ -26,12 +29,8 @@ public class Medico{
     private String cep;
     private String cidade;
     private String estado;
-    private String cnpj;
-    private String crm;
-    private Date dtInicio;
     @OneToMany
-    private List<GradeConsulta> gradeConsultas;
-    @OneToMany(mappedBy = "medico")
-    private List<Especialidade> especialidades;
-    private boolean situacao;
+    private List<Consulta> horarioConsultas;
+
+
 }

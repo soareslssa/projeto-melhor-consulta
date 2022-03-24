@@ -1,8 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { Consulta } from './../../../models/consulta';
-import { ConsultasService } from './../../../modules/consultas/services/consultas.service';
+import { Component, OnInit } from '@angular/core';
+import { GradeConsulta } from './../../../models/gradeConsulta';
+import { GradeConsultaService } from './../../../modules/consultas/services/grade-consulta.service';
 
 @Component({
   selector: 'app-consultas-table',
@@ -11,12 +9,12 @@ import { ConsultasService } from './../../../modules/consultas/services/consulta
 })
 export class ConsultasTableComponent implements OnInit {
 
-  consultas: Consulta[] = [];
+  grades: GradeConsulta[] = [];
 
 
   ngOnInit() {
-      this.consultasService.list().subscribe(data => this.consultas = data);
+      this.gradeConsultaService.listarGrades().subscribe(data => this.grades = data);
   }
 
-  constructor(private consultasService: ConsultasService) {}
+  constructor(private gradeConsultaService: GradeConsultaService) {}
 }

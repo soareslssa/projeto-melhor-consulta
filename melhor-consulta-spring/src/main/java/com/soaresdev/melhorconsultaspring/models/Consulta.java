@@ -1,13 +1,13 @@
 package com.soaresdev.melhorconsultaspring.models;
 
+import com.soaresdev.melhorconsultaspring.dominio.DominioSituacaoConsulta;
 import lombok.Data;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.util.Date;
 
@@ -18,14 +18,15 @@ public class Consulta {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String codigo;
-    private String paciente;
+    @OneToOne
+    private Paciente paciente;
     @OneToOne
     private Medico medico;
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ESP_ID", referencedColumnName = "ID")
-    private Especialidade especialidade;
-    private Date dtConsulta;
-    private boolean situacao;
-    private Double valor;
+    @ManyToOne
+    private GradeConsulta gradeConsulta;
+    private Date horarioConsulta;
+    private Date dtMarcacao;
+    private DominioSituacaoConsulta situacao;
+
+
 }

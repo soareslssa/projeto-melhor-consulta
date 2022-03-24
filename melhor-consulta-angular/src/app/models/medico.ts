@@ -1,16 +1,21 @@
-import { Consulta } from './consulta';
+import { Especialidade } from './especialidade';
+import { GradeConsulta } from './gradeConsulta';
 export interface Medico {
   id: number,
   nome: string,
+  sobrenome: string,
+  nomeSocial: string,
   email: string,
   cpf: string,
   cnpj: string,
   crm: string,
   dtInicio: string,
   dtNascimento: string,
-  endereco: string,
+  logradouro: string,
+  nroLogradouro: string,
   cep: string,
-  uf: string,
-  consultas: Consulta[]
+  estado: string,
+  grades: GradeConsulta[],
+  especialidades: Especialidade[],
   situacao: boolean
 }

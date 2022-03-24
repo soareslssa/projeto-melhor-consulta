@@ -2,7 +2,12 @@ package com.soaresdev.melhorconsultaspring.models;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Data
@@ -12,14 +17,15 @@ public class Especialidade {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private Long id;
+    private String sigla;
     private String descricao;
+    private boolean situacao;
     @ManyToOne
     private Medico medico;
-    private boolean situacao;
 
-    public Especialidade(String descricao, Medico medico, boolean situacao) {
+    public Especialidade(String sigla, String descricao, boolean situacao) {
+        this.sigla = sigla;
         this.descricao = descricao;
-        this.medico = medico;
         this.situacao = situacao;
     }
 

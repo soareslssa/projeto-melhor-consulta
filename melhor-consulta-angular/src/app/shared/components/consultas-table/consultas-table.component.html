@@ -2,17 +2,22 @@
 <p-table [value]="grades" responsiveLayout="scroll">
   <ng-template pTemplate="header">
       <tr>
-          <th>Especialidade</th>
+        <th style="width: 3rem;"></th>
+          <th style="width: 20rem;">Especialidade</th>
           <th>Médico</th>
           <th>Endereço</th>
           <th>Estado</th>
-          <th>Agendar</th>
+          <th></th>
+
       </tr>
       <tr>
+        <th></th>
           <th>
             <p-columnFilter placeholder="Ex. Cardiologia"  type="text" field="especialidade.descricao"></p-columnFilter>
           </th>
-          <th></th>
+          <th>
+            <p-columnFilter placeholder="Ex. Dr. Fulano"   type="text" field="medico.nomeSocial"></p-columnFilter>
+          </th>
           <th></th>
           <th>
               <p-dropdown [options]="estados" optionLabel="nome"></p-dropdown>
@@ -20,14 +25,28 @@
           <th></th>
       </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-consulta>
+  <ng-template pTemplate="body" let-consulta let-expanded="expanded">
       <tr>
-          <td>{{consulta.especialidade.descricao}}</td>
+        <td>
+          <button type="button" pButton pRipple [pRowToggler]="consulta" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+        </td>
+          <td>
+            {{consulta.especialidade.descricao}}</td>
           <td>{{consulta.medico.nomeSocial}}</td>
           <td>{{consulta.medico.logradouro}} {{consulta.medico.nroLogradouro}}</td>
           <td>{{consulta.medico.estado}}</td>
-          <td><p-button label="Agendar" icon="pi pi-check" iconPos="right"></p-button></td>
+          <td>
+            <p-button label="Horários" icon="pi pi-calendar" iconPos="right" (click)="showDialog()"></p-button>
+          </td>
       </tr>
+  </ng-template>
+  <ng-template pTemplate="rowexpansion" let-consulta>
+      CONTEUDO
   </ng-template>
 </p-table>
 </p-card>
+
+
+<p-dialog header="Marcar Horário" [(visible)]="display" [modal]="true" [draggable]="false" [resizable]="false">
+  Content
+</p-dialog>

@@ -13,6 +13,11 @@ export class ConsultasTableComponent implements OnInit {
 
   grades: GradeConsulta[] = [];
   estados: Estado[] = [];
+  display: boolean = false;
+
+  showDialog() {
+      this.display = true;
+  }
 
 
   ngOnInit() {

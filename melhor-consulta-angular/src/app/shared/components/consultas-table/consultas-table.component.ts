@@ -1,3 +1,5 @@
+import { UtilsService } from './../../services/utils.service';
+import { Estado } from './../../../models/estado';
 import { Component, OnInit } from '@angular/core';
 import { GradeConsulta } from './../../../models/gradeConsulta';
 import { GradeConsultaService } from './../../../modules/consultas/services/grade-consulta.service';
@@ -10,11 +12,14 @@ import { GradeConsultaService } from './../../../modules/consultas/services/grad
 export class ConsultasTableComponent implements OnInit {
 
   grades: GradeConsulta[] = [];
+  estados: Estado[] = [];
 
 
   ngOnInit() {
       this.gradeConsultaService.listarGrades().subscribe(data => this.grades = data);
+      this.utilsService.listarEstados().subscribe(data => this.estados = data);
   }
 
-  constructor(private gradeConsultaService: GradeConsultaService) {}
+  constructor(private gradeConsultaService: GradeConsultaService,
+    private utilsService: UtilsService) {}
 }

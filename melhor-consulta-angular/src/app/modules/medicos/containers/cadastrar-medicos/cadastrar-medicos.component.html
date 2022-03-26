@@ -1,1 +1,16 @@
-<<p>cadastrar-medicos works!</p>>
+<p-card header="Cadastrar Médico">
+  <div class="p-fluid grid">
+    <div class="field col ">
+      <p-rating [cancel]="false" [readonly]="true"
+      ngModel="4"></p-rating>
+      <span class="p-float-label">
+        <input id="float-input" type="text" pInputText>
+        <label for="float-input">Nome</label>
+    </span>
+    <span class="p-float-label">
+        <input id="float-input" type="text" pInputText>
+        <label for="float-input">Sobrenome</label>
+    </span>
+    </div>
+  </div>
+</p-card>

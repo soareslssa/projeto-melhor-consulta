@@ -5,8 +5,8 @@
         <th style="width: 3rem;"></th>
           <th style="width: 20rem;">Especialidade</th>
           <th>Médico</th>
-          <th>Endereço</th>
           <th>Estado</th>
+          <th>Avaliação</th>
           <th></th>
 
       </tr>
@@ -18,10 +18,10 @@
           <th>
             <p-columnFilter placeholder="Ex. Dr. Fulano"   type="text" field="medico.nomeSocial"></p-columnFilter>
           </th>
-          <th></th>
           <th>
               <p-dropdown [options]="estados" optionLabel="nome"></p-dropdown>
           </th>
+          <th></th>
           <th></th>
       </tr>
   </ng-template>
@@ -33,8 +33,11 @@
           <td>
             {{consulta.especialidade.descricao}}</td>
           <td>{{consulta.medico.nomeSocial}}</td>
-          <td>{{consulta.medico.logradouro}} {{consulta.medico.nroLogradouro}}</td>
           <td>{{consulta.medico.estado}}</td>
+          <td>
+            <p-rating [cancel]="false" [readonly]="true"
+                  [(ngModel)]="consulta.medico.notaAvaliacao"></p-rating>
+          </td>
           <td>
             <p-button label="Horários" icon="pi pi-calendar" iconPos="right" (click)="showDialog()"></p-button>
           </td>

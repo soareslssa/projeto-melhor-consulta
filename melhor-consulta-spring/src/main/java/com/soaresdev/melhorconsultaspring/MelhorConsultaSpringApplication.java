@@ -57,6 +57,7 @@ public class MelhorConsultaSpringApplication {
 			m1.setCep("22710-480");
 			m1.setEstado("Rio de Janeiro");
 			m1.setEspecialidades(espCardio);
+			m1.setNotaAvaliacao(4);
 
 			Medico m2 = new Medico();
 			m2.setNome("Marina Fabiana");
@@ -74,6 +75,7 @@ public class MelhorConsultaSpringApplication {
 			m2.setCep("22710-480");
 			m2.setEstado("Sao Paulo");
 			m2.setEspecialidades(espCardioFamilia);
+			m2.setNotaAvaliacao(5);
 
 			Medico m3 = new Medico();
 			m3.setNome("Antônia");
@@ -91,6 +93,7 @@ public class MelhorConsultaSpringApplication {
 			m3.setCep("13328-734");
 			m3.setEstado("Sao Paulo");
 			m3.setEspecialidades(espCardio);
+			m3.setNotaAvaliacao(3);
 
 			GradeConsulta c = new GradeConsulta();
 			c.setCriadoEm(new Date());

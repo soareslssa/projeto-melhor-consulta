@@ -17,5 +17,6 @@ export interface Medico {
   estado: string,
   grades: GradeConsulta[],
   especialidades: Especialidade[],
-  situacao: boolean
+  situacao: boolean,
+  notaAvaliacao: number
 }

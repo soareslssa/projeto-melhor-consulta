@@ -5,6 +5,8 @@ import {CardModule} from 'primeng/card';
 import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
 import {DialogModule} from 'primeng/dialog';
+import {InputTextModule} from 'primeng/inputtext';
+import {RatingModule} from 'primeng/rating';
 
 
 @NgModule({
@@ -13,6 +15,8 @@ import {DialogModule} from 'primeng/dialog';
     CardModule,
     ButtonModule,
     DropdownModule,
-    DialogModule],
+    DialogModule,
+    InputTextModule,
+    RatingModule],
 })
 export class AppPrimengModule {}

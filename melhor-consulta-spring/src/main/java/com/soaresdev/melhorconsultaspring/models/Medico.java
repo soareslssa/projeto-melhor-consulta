@@ -34,4 +34,5 @@ public class Medico{
     @OneToMany(mappedBy = "medico")
     private List<Especialidade> especialidades;
     private boolean situacao;
+    private Integer notaAvaliacao;
 }

@@ -1,5 +1,6 @@
 import { Sexo } from './../../../../models/sexo';
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-cadastrar-medicos',
@@ -8,26 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastrarMedicosComponent implements OnInit {
 
-  sexoOptions: Sexo[];
-
-  nome!: string;
-  sobrenome!: string;
-  sexo!: Sexo;
+  items: MenuItem[];
 
   constructor() {
-
-    this.limparCampos();
-
-    this.sexoOptions = [
-     {descricao: 'Masculino', sigla: 'M'},
-     {descricao: 'Feminino', sigla: 'F'},
-     {descricao: 'Outros', sigla: 'O'}
+    this.items = [
+      {label: 'Dados Pessoais', routerLink:'dados-pessoais-medicos'},
+      {label: 'Dados Profissionais'},
+      {label: 'Contato'},
+      {label: 'Confirmação'}
     ]
-  }
-
-  private limparCampos() {
-    this.nome = '';
-    this.sobrenome = '';
   }
 
   ngOnInit(): void {

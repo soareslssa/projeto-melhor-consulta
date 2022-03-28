@@ -1,0 +1,97 @@
+<div class="stepsdemo-content">
+  <p-card>
+    <div class="p-fluid grid">
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input id="txtNome" type="text" pInputText />
+          <label for="txtNome">Nome</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input id="txtSobrenome" type="text" pInputText />
+          <label for="txtSobrenome">sobrenome</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input id="txtNomeSocial" type="text" pInputText />
+          <label for="txtNomeSocial">Nome Social</label>
+        </span>
+      </div>
+    </div>
+
+    <div class="p-fluid grid">
+      <div class="field col-12 md:col-2">
+        <span class="p-float-label">
+          <p-calendar inputId="dtNascimento"></p-calendar>
+          <label for="dtNascimento">Data Nascimento</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-2">
+        <p-dropdown
+          id="sbSexo"
+          [options]="sexoOptions"
+          (ngModel)="(sexo)"
+          placeholder="Sexo"
+          optionLabel="descricao"
+          [showClear]="false"
+        ></p-dropdown>
+      </div>
+    </div>
+
+    <div class="p-fluid grid">
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <input id="txtEmail" type="email" pInputText />
+          <label for="txtEmail">Email</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <p-inputMask
+            id="txtCpf"
+            mask="999.999.999-99"
+            (autoClear)="(true)"
+          ></p-inputMask>
+          <label for="txtCpf">CPF</label>
+        </span>
+      </div>
+    </div>
+
+    <div class="p-fluid grid">
+
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <p-inputMask
+            id="txtCrm"
+            mask="99999-a*"
+            (autoClear)="(true)"
+          ></p-inputMask>
+          <label for="txtCrm">CRM</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-4">
+        <span class="p-float-label">
+          <p-inputMask
+            id="txtCnpj"
+            mask="99.999.999/9999-99"
+            (autoClear)="(true)"
+          ></p-inputMask>
+          <label for="txtCnpj">CNPJ</label>
+        </span>
+      </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+      <div class="grid grid-nogutter justify-content-end">
+        <p-button label="Avançar"  icon="pi pi-angle-right" iconPos="right"></p-button>
+    </div>
+    </ng-template>
+  </p-card>
+</div>

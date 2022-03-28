@@ -1,3 +1,4 @@
+import { DadosPessoaisMedicosComponent } from './containers/cadastrar-medicos/dados-pessoais-medicos/dados-pessoais-medicos.component';
 import { MedicosRoutingModule } from '../medicos/medicos-routing.module';
 import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -8,7 +9,8 @@ import { CadastrarMedicosComponent } from './containers/cadastrar-medicos/cadast
 
 @NgModule({
   declarations: [
-    CadastrarMedicosComponent
+    CadastrarMedicosComponent,
+    DadosPessoaisMedicosComponent
   ],
   imports: [
     CommonModule,

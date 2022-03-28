@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* SCSS MATERIAL */
 @import '@angular/material/theming';
 @include mat-core();
 
@@ -10,6 +11,9 @@ $custom-app-accent: mat-palette($mat-indigo, A200);
 $custom-theme: mat-light-theme($custom-app-primary,$custom-app-secondary,$custom-app-accent);
 
 @include angular-material-theme($custom-theme);
+
+/* SCSS PRIMEFLEX */
+@import 'primeflex/primeflex.scss';
 
 html,
 body {

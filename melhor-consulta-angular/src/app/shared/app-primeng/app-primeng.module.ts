@@ -7,16 +7,24 @@ import {DropdownModule} from 'primeng/dropdown';
 import {DialogModule} from 'primeng/dialog';
 import {InputTextModule} from 'primeng/inputtext';
 import {RatingModule} from 'primeng/rating';
+import {InputMaskModule} from 'primeng/inputmask';
+import {CalendarModule} from 'primeng/calendar';
+import {StepsModule} from 'primeng/steps';
 
 
 @NgModule({
-  exports: [TableModule,
+  exports: [
+    TableModule,
     AccordionModule,
     CardModule,
     ButtonModule,
     DropdownModule,
     DialogModule,
     InputTextModule,
-    RatingModule],
+    RatingModule,
+    InputMaskModule,
+    CalendarModule,
+    StepsModule
+  ],
 })
 export class AppPrimengModule {}

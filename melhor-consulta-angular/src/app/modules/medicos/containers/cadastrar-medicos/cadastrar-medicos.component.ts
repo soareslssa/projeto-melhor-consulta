@@ -1,3 +1,4 @@
+import { Sexo } from './../../../../models/sexo';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastrarMedicosComponent implements OnInit {
 
-  constructor() { }
+  sexoOptions: Sexo[];
+
+  nome!: string;
+  sobrenome!: string;
+  sexo!: Sexo;
+
+  constructor() {
+
+    this.limparCampos();
+
+    this.sexoOptions = [
+     {descricao: 'Masculino', sigla: 'M'},
+     {descricao: 'Feminino', sigla: 'F'},
+     {descricao: 'Outros', sigla: 'O'}
+    ]
+  }
+
+  private limparCampos() {
+    this.nome = '';
+    this.sobrenome = '';
+  }
 
   ngOnInit(): void {
   }

@@ -1,16 +1,89 @@
 <p-card header="Cadastrar Médico">
-  <div class="p-fluid grid">
-    <div class="field col ">
-      <p-rating [cancel]="false" [readonly]="true"
-      ngModel="4"></p-rating>
-      <span class="p-float-label">
-        <input id="float-input" type="text" pInputText>
-        <label for="float-input">Nome</label>
-    </span>
-    <span class="p-float-label">
-        <input id="float-input" type="text" pInputText>
-        <label for="float-input">Sobrenome</label>
-    </span>
+  <p-card header="Dados pessoais">
+    <div class="p-fluid grid">
+      <div class="field col-12 md:col-2">
+        <span class="p-float-label">
+          <input id="txtNome" (ngModel)="(nome)" type="text" pInputText />
+          <label for="txtNome">Nome</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-2">
+        <span class="p-float-label">
+          <input id="txtSobrenome" type="text" pInputText />
+          <label for="txtSobrenome">sobrenome</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-2">
+        <span class="p-float-label">
+          <input id="txtNomeSocial" type="text" pInputText />
+          <label for="txtNomeSocial">Nome Social</label>
+        </span>
+      </div>
     </div>
-  </div>
+
+    <div class="p-fluid grid">
+      <div class="field col-12 md:col-2">
+        <span class="p-float-label">
+          <p-calendar inputId="dtNascimento"></p-calendar>
+          <label for="dtNascimento">Data Nascimento</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-2">
+        <p-dropdown
+          id="sbSexo"
+          [options]="sexoOptions"
+          (ngModel)="(sexo)"
+          placeholder="Sexo"
+          optionLabel="descricao"
+          [showClear]="false"
+        ></p-dropdown>
+      </div>
+    </div>
+
+    <div class="p-fluid grid">
+      <div class="field col-12 md:col-2">
+        <span class="p-float-label">
+          <input id="txtEmail" type="email" pInputText />
+          <label for="txtEmail">Email</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-2">
+        <span class="p-float-label">
+          <p-inputMask id="txtCpf" mask="999.999.999-99" (autoClear)="true"></p-inputMask>
+          <label for="txtCpf">CPF</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-2">
+        <span class="p-float-label">
+          <p-inputMask id="txtCrm" mask="99999-a*" (autoClear)="true"></p-inputMask>
+          <label for="txtCrm">CRM</label>
+        </span>
+      </div>
+
+      <div class="field col-12 md:col-2">
+        <span class="p-float-label">
+          <p-inputMask id="txtCnpj" mask="99.999.999/9999-99" (autoClear)="true"></p-inputMask>
+          <label for="txtCnpj">CNPJ</label>
+        </span>
+      </div>
+    </div>
+  </p-card>
+
+  <!--  DADOS CONTATO -->
+
+  <p-card header="Contato">
+    <div class="p-fluid grid">
+      <div class="field col-12 md:col-2">
+        <span class="p-float-label">
+          <input id="txtLogradouro" type="text" pInputText />
+          <label for="txtLogradouro">Logradouro</label>
+        </span>
+      </div>
+      </div>
+  </p-card>
 </p-card>

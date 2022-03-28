@@ -1,4 +1,3 @@
-import { Sexo } from './../../../../models/sexo';
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
@@ -14,7 +13,7 @@ export class CadastrarMedicosComponent implements OnInit {
   constructor() {
     this.items = [
       {label: 'Dados Pessoais', routerLink:'dados-pessoais-medicos'},
-      {label: 'Dados Profissionais'},
+      {label: 'Dados Profissionais', routerLink:'dados-profissionais-medicos'},
       {label: 'Contato'},
       {label: 'Confirmação'}
     ]

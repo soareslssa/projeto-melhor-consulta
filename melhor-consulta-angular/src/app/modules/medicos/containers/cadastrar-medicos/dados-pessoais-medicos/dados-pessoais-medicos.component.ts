@@ -1,3 +1,5 @@
+import { Medico } from './../../../../../models/medico';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Sexo } from 'src/app/models/sexo';
 
@@ -9,9 +11,12 @@ import { Sexo } from 'src/app/models/sexo';
 export class DadosPessoaisMedicosComponent implements OnInit {
 
   sexoOptions: Sexo[];
-  sexo!: Sexo;
+  medico!: Medico;
 
-  constructor() {
+  sexo!: Sexo;
+  submitted: boolean = false;
+
+  constructor(private router: Router) {
     this.sexoOptions = [
       {descricao: 'Masculino', sigla: 'M'},
       {descricao: 'Feminino', sigla: 'F'},
@@ -20,5 +25,10 @@ export class DadosPessoaisMedicosComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  nextPage() {
+      this.router.navigate(['medicos/cadastrar/dados-profissionais-medicos']);
+      this.submitted = true;
+  }
 
 }

@@ -10,6 +10,7 @@ import {RatingModule} from 'primeng/rating';
 import {InputMaskModule} from 'primeng/inputmask';
 import {CalendarModule} from 'primeng/calendar';
 import {StepsModule} from 'primeng/steps';
+import {AvatarModule} from 'primeng/avatar';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {StepsModule} from 'primeng/steps';
     RatingModule,
     InputMaskModule,
     CalendarModule,
-    StepsModule
+    StepsModule,
+    AvatarModule
   ],
 })
 export class AppPrimengModule {}

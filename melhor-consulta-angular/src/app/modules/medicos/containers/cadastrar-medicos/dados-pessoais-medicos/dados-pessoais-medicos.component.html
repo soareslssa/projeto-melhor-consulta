@@ -89,8 +89,8 @@
     </div>
 
     <ng-template pTemplate="footer">
-      <div class="grid grid-nogutter justify-content-end">
-        <p-button label="Avançar"  icon="pi pi-angle-right" iconPos="right"></p-button>
+      <div class="grid grid-nogutter justify-content-end" >
+        <p-button label="Avançar"  icon="pi pi-angle-right" (onClick)="nextPage()" iconPos="right"></p-button>
     </div>
     </ng-template>
   </p-card>

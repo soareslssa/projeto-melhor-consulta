@@ -11,6 +11,7 @@ import {InputMaskModule} from 'primeng/inputmask';
 import {CalendarModule} from 'primeng/calendar';
 import {StepsModule} from 'primeng/steps';
 import {AvatarModule} from 'primeng/avatar';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {AvatarModule} from 'primeng/avatar';
     InputMaskModule,
     CalendarModule,
     StepsModule,
-    AvatarModule
+    AvatarModule,
+    InputNumberModule
   ],
 })
 export class AppPrimengModule {}

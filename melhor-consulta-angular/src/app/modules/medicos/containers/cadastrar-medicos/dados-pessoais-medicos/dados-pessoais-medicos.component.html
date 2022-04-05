@@ -1,23 +1,24 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()"  novalidate>
 <div class="stepsdemo-content">
   <p-card>
     <div class="p-fluid grid">
       <div class="field col-12 md:col-4">
         <span class="p-float-label">
-          <input id="txtNome" type="text" pInputText />
+          <input id="txtNome" type="text" formControlName="nome" pInputText />
           <label for="txtNome">Nome</label>
         </span>
       </div>
 
       <div class="field col-12 md:col-4">
         <span class="p-float-label">
-          <input id="txtSobrenome" type="text" pInputText />
+          <input id="txtSobrenome" type="text" formControlName="sobrenome" pInputText />
           <label for="txtSobrenome">sobrenome</label>
         </span>
       </div>
 
       <div class="field col-12 md:col-4">
         <span class="p-float-label">
-          <input id="txtNomeSocial" type="text" pInputText />
+          <input id="txtNomeSocial" type="text"  formControlName="nomesocial" pInputText />
           <label for="txtNomeSocial">Nome Social</label>
         </span>
       </div>
@@ -26,7 +27,7 @@
     <div class="p-fluid grid">
       <div class="field col-12 md:col-2">
         <span class="p-float-label">
-          <p-calendar inputId="dtNascimento"></p-calendar>
+          <p-calendar inputId="dtNascimento"  formControlName="dtNascimento"></p-calendar>
           <label for="dtNascimento">Data Nascimento</label>
         </span>
       </div>
@@ -35,8 +36,8 @@
         <p-dropdown
           id="sbSexo"
           [options]="sexoOptions"
-          (ngModel)="(sexo)"
           placeholder="Sexo"
+          formControlName="sexo"
           optionLabel="descricao"
           [showClear]="false"
         ></p-dropdown>
@@ -46,7 +47,7 @@
     <div class="p-fluid grid">
       <div class="field col-12 md:col-4">
         <span class="p-float-label">
-          <input id="txtEmail" type="email" pInputText />
+          <input id="txtEmail" type="email"  formControlName="email" pInputText />
           <label for="txtEmail">Email</label>
         </span>
       </div>
@@ -54,7 +55,7 @@
       <div class="field col-12 md:col-4">
         <span class="p-float-label">
           <p-inputMask
-            id="txtCpf"
+            id="txtCpf"  formControlName="cpf"
             mask="999.999.999-99"
             (autoClear)="(true)"
           ></p-inputMask>
@@ -68,7 +69,7 @@
       <div class="field col-12 md:col-4">
         <span class="p-float-label">
           <p-inputMask
-            id="txtCrm"
+            id="txtCrm"  formControlName="crm"
             mask="99999-a*"
             (autoClear)="(true)"
           ></p-inputMask>
@@ -79,7 +80,7 @@
       <div class="field col-12 md:col-4">
         <span class="p-float-label">
           <p-inputMask
-            id="txtCnpj"
+            id="txtCnpj"  formControlName="cnpj"
             mask="99.999.999/9999-99"
             (autoClear)="(true)"
           ></p-inputMask>
@@ -88,6 +89,8 @@
       </div>
     </div>
 
+    <p-button type="submit">enviar</p-button>
+
     <ng-template pTemplate="footer">
       <div class="grid grid-nogutter justify-content-end" >
         <p-button label="Avançar"  icon="pi pi-angle-right" (onClick)="nextPage()" iconPos="right"></p-button>
@@ -95,3 +98,4 @@
     </ng-template>
   </p-card>
 </div>
+</form>

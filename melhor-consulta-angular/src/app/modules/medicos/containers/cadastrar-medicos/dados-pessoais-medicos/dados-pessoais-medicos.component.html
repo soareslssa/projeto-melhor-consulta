@@ -1,24 +1,24 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()"  novalidate>
+<form [formGroup]="form" novalidate>
 <div class="stepsdemo-content">
   <p-card>
     <div class="p-fluid grid">
-      <div class="field col-12 md:col-4">
+      <div class="field col-12 md:col-2">
         <span class="p-float-label">
           <input id="txtNome" type="text" formControlName="nome" pInputText />
           <label for="txtNome">Nome</label>
         </span>
       </div>
 
-      <div class="field col-12 md:col-4">
+      <div class="field col-12 md:col-2">
         <span class="p-float-label">
           <input id="txtSobrenome" type="text" formControlName="sobrenome" pInputText />
           <label for="txtSobrenome">sobrenome</label>
         </span>
       </div>
 
-      <div class="field col-12 md:col-4">
+      <div class="field col-12 md:col-2">
         <span class="p-float-label">
-          <input id="txtNomeSocial" type="text"  formControlName="nomesocial" pInputText />
+          <input id="txtNomeSocial" type="text"  formControlName="nomeSocial" pInputText />
           <label for="txtNomeSocial">Nome Social</label>
         </span>
       </div>
@@ -45,14 +45,14 @@
     </div>
 
     <div class="p-fluid grid">
-      <div class="field col-12 md:col-4">
+      <div class="field col-12 md:col-2">
         <span class="p-float-label">
           <input id="txtEmail" type="email"  formControlName="email" pInputText />
           <label for="txtEmail">Email</label>
         </span>
       </div>
 
-      <div class="field col-12 md:col-4">
+      <div class="field col-12 md:col-2">
         <span class="p-float-label">
           <p-inputMask
             id="txtCpf"  formControlName="cpf"
@@ -66,7 +66,7 @@
 
     <div class="p-fluid grid">
 
-      <div class="field col-12 md:col-4">
+      <div class="field col-12 md:col-2">
         <span class="p-float-label">
           <p-inputMask
             id="txtCrm"  formControlName="crm"
@@ -77,7 +77,7 @@
         </span>
       </div>
 
-      <div class="field col-12 md:col-4">
+      <div class="field col-12 md:col-2">
         <span class="p-float-label">
           <p-inputMask
             id="txtCnpj"  formControlName="cnpj"
@@ -88,8 +88,6 @@
         </span>
       </div>
     </div>
-
-    <p-button type="submit">enviar</p-button>
 
     <ng-template pTemplate="footer">
       <div class="grid grid-nogutter justify-content-end" >

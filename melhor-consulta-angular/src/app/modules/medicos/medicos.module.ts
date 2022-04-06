@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CadastrarMedicosComponent } from './containers/cadastrar-medicos/cadastrar-medicos.component';
 import { DadosProfissionaisMedicosComponent } from './containers/cadastrar-medicos/dados-profissionais-medicos/dados-profissionais-medicos.component';
+import { ContatoMedicosComponent } from './containers/cadastrar-medicos/contato-medicos/contato-medicos.component';
 
 
 
@@ -12,7 +13,8 @@ import { DadosProfissionaisMedicosComponent } from './containers/cadastrar-medic
   declarations: [
     CadastrarMedicosComponent,
     DadosPessoaisMedicosComponent,
-    DadosProfissionaisMedicosComponent
+    DadosProfissionaisMedicosComponent,
+    ContatoMedicosComponent
   ],
   imports: [
     CommonModule,

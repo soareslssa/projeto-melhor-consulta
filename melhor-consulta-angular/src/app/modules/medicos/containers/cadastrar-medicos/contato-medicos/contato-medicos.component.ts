@@ -1,14 +1,14 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UtilsService } from './../../../../../shared/services/utils.service';
+import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component({
-  selector: 'app-dados-profissionais-medicos',
-  templateUrl: './dados-profissionais-medicos.component.html',
-  styleUrls: ['./dados-profissionais-medicos.component.scss']
+  selector: 'app-contato-medicos',
+  templateUrl: './contato-medicos.component.html',
+  styleUrls: ['./contato-medicos.component.scss']
 })
-export class DadosProfissionaisMedicosComponent implements OnInit {
+export class ContatoMedicosComponent implements OnInit {
 
   formEndereco: FormGroup;
 
@@ -18,7 +18,9 @@ export class DadosProfissionaisMedicosComponent implements OnInit {
       bairro: fb.control('', Validators.required),
       cep: fb.control('', Validators.required),
       uf: fb.control('', Validators.required),
-      localidade: fb.control('', Validators.required)
+      localidade: fb.control('', Validators.required),
+      celular: fb.control('', Validators.required),
+      telefone: fb.control('')
     });
   }
 
@@ -33,13 +35,11 @@ export class DadosProfissionaisMedicosComponent implements OnInit {
       console.log(this.formEndereco);
   }
 
-  nextPage(){
-    this.router.navigate(['medicos/cadastrar/contato-medicos'])
+  recuarStep(){
+    this.router.navigate(['medicos/cadastrar/dados-profissionais-medicos'])
   }
 
-  prevPage(){
-    this.router.navigate(['medicos/cadastrar/dados-pessoais-medicos'])
+  avancarStep(){
+
   }
-
-
 }

@@ -9,49 +9,11 @@
         </span>
       </div>
       </div>
-    <div class="p-fluid grid">
-      <div class="field col-12 md:col-4">
-        <span class="p-float-label">
-          <input id="txtLogradouro" formControlName="logradouro" type="text" pInputText />
-          <label for="txtLogradouro">Logradouro</label>
-        </span>
-      </div>
-
-      <div class="field col-12 md:col-2">
-        <span class="p-float-label">
-          <p-inputNumber id="txtNroLogradouro"  ></p-inputNumber>
-          <label for="txtNroLogradouro">Número</label>
-        </span>
-      </div>
-    </div>
-
-    <div class="p-fluid grid">
-      <div class="field col-12 md:col-4">
-        <span class="p-float-label">
-          <input id="txtBairro" formControlName="bairro" type="text" pInputText />
-          <label for="txtBairro">Bairro</label>
-        </span>
-      </div>
-
-      <div class="field col-12 md:col-2">
-        <span class="p-float-label">
-          <input id="txtEstado" formControlName="uf" type="text" pInputText />
-          <label for="txtEstado">Estado</label>
-        </span>
-      </div>
-
-      <div class="field col-12 md:col-2">
-        <span class="p-float-label">
-          <input id="txtCidade" formControlName="localidade" type="text" pInputText />
-          <label for="txtCidade">Cidade</label>
-        </span>
-      </div>
-        </div>
-
 
     <ng-template pTemplate="footer">
       <div class="grid grid-nogutter justify-content-end" >
-        <p-button label="Avançar"  icon="pi pi-angle-right"  iconPos="right"></p-button>
+        <p-button label="Recuar"  icon="pi pi-angle-left" (onClick)="prevPage()" ></p-button>
+        <p-button label="Avançar"   icon="pi pi-angle-right" (onClick)="nextPage()"  iconPos="right"></p-button>
     </div>
     </ng-template>
   </p-card>

@@ -14,7 +14,7 @@ export class CadastrarMedicosComponent implements OnInit {
     this.items = [
       {label: 'Dados Pessoais', routerLink:'dados-pessoais-medicos'},
       {label: 'Dados Profissionais', routerLink:'dados-profissionais-medicos'},
-      {label: 'Contato'},
+      {label: 'Contato', routerLink: 'contato-medicos'},
       {label: 'Confirmação'}
     ]
   }

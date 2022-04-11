@@ -12,7 +12,7 @@ import {CalendarModule} from 'primeng/calendar';
 import {StepsModule} from 'primeng/steps';
 import {AvatarModule} from 'primeng/avatar';
 import {InputNumberModule} from 'primeng/inputnumber';
-
+import {DividerModule} from 'primeng/divider';
 
 @NgModule({
   exports: [
@@ -28,7 +28,8 @@ import {InputNumberModule} from 'primeng/inputnumber';
     CalendarModule,
     StepsModule,
     AvatarModule,
-    InputNumberModule
+    InputNumberModule,
+    DividerModule
   ],
 })
 export class AppPrimengModule {}

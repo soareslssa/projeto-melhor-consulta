@@ -38,7 +38,7 @@ public class EspecialidadeController {
     }
 
     @DeleteMapping
-    public void removerEspecialidade(@RequestParam Long id){
+    public void removerEspecialidade(@RequestParam Integer id){
         this.especialidadeRepository.deleteById(id);
     }
 }

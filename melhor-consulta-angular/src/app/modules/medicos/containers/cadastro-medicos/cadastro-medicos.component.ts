@@ -1,9 +1,12 @@
+import { Medico, MedicoRequest } from './../../../../models/medico';
+import { MedicosService } from './../../services/medicos.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { UtilsService } from './../../../../shared/services/utils.service';
 import { Especialidade } from './../../../../models/especialidade';
 import { EspecialidadesService } from './../../../consultas/services/especialidades.service';
 import { Component, OnInit } from '@angular/core';
 import { Sexo } from 'src/app/models/sexo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-medicos',
@@ -15,9 +18,13 @@ export class CadastroMedicosComponent implements OnInit {
   especialidades: Especialidade[];
   form: FormGroup;
 
-  constructor(private especialidadeService: EspecialidadesService,
-    private utilsservice: UtilsService, private fb: FormBuilder) {
-
+  constructor(
+    private especialidadeService: EspecialidadesService,
+    private medicosService: MedicosService,
+    private utilsservice: UtilsService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     this.form = fb.group({
       nome: fb.control(''),
       sobrenome: fb.control(''),
@@ -32,28 +39,48 @@ export class CadastroMedicosComponent implements OnInit {
       especialidade: fb.control(''),
       cep: fb.control(''),
       logradouro: fb.control(''),
-      numero: fb.control(''),
+      nroLogradouro: fb.control(''),
       complemento: fb.control(''),
       bairro: fb.control(''),
       localidade: fb.control(''),
-      uf: fb.control('')
-    })
+      uf: fb.control(''),
+    });
 
     this.optSexo = [
       { descricao: 'Masculino', sigla: 'M' },
       { descricao: 'Feminino', sigla: 'F' },
     ];
 
-    this.especialidadeService.list()
-    .subscribe(dados => this.especialidades = dados);
+    this.especialidadeService
+      .list()
+      .subscribe((dados) => (this.especialidades = dados));
   }
 
   ngOnInit(): void {}
 
-  pesquisarEnderecoViaCep(){
-    this.utilsservice.pesquisarEnderecoViaCep(this.form.controls['cep'].value)
-    .subscribe(data => {
-      this.form.patchValue(data)
-    });
+  pesquisarEnderecoViaCep() {
+    this.utilsservice
+      .pesquisarEnderecoViaCep(this.form.controls['cep'].value)
+      .subscribe((data) => {
+        this.form.patchValue(data);
+      });
+  }
+
+  cadastrarMedico() {
+    const novoMedico: MedicoRequest = {... this.form.value};
+    this.medicosService.adicionarMedico(novoMedico)
+        .subscribe(result =>{
+          this.router.navigate(['/consultas']);
+        }
+        );
+  }
+
+  validarSenha(confirmaSenha: string) {
+    const senha: string = this.form.controls['senha'].value;
+    if (senha != null) {
+      if (!senha.localeCompare(confirmaSenha)) {
+        console.log('A senhas não são iguais!');
+      }
+    }
   }
 }

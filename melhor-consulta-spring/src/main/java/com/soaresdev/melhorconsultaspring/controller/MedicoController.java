@@ -1,7 +1,9 @@
 package com.soaresdev.melhorconsultaspring.controller;
 
+import com.soaresdev.melhorconsultaspring.dto.MedicoDTO;
 import com.soaresdev.melhorconsultaspring.models.Medico;
 import com.soaresdev.melhorconsultaspring.repository.MedicoRepository;
+import com.soaresdev.melhorconsultaspring.service.MedicosService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,7 @@ import java.util.List;
 public class MedicoController {
 
     private final MedicoRepository medicoRepository;
+    private final MedicosService medicosService;
 
     @GetMapping
     public List<Medico> listar(){
@@ -20,8 +23,8 @@ public class MedicoController {
     }
 
     @PostMapping
-    public void inserirMedico(@RequestBody Medico medico){
-        this.medicoRepository.save(medico);
+    public void inserirMedico(@RequestBody MedicoDTO medico){
+        medicosService.inserirMedico(medico);
     }
 
     @GetMapping("/id")

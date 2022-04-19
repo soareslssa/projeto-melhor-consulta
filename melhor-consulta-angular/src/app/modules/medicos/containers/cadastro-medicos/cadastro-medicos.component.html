@@ -5,13 +5,13 @@
   <div class="grid p-fluid">
     <div class="col-12 md:col-6 lg:col-2">
       <span class="p-float-label">
-        <input id="txtNome" type="text" pInputText />
+        <input id="txtNome" type="text" pInputText formControlName="nome" />
         <label for="txtNome">Nome</label>
       </span>
     </div>
     <div class="col-12 md:col-6 lg:col-2">
       <span class="p-float-label">
-        <input id="txtSobrenome" type="text" pInputText />
+        <input id="txtSobrenome" type="text" formControlName="sobrenome" pInputText />
         <label for="txtSobrenome">Sobrenome</label>
       </span>
     </div>
@@ -19,20 +19,20 @@
   <div class="grid p-fluid">
     <div class="col-12 md:col-6 lg:col-2">
       <span class="p-float-label">
-        <input id="txtEmail" type="email" pInputText />
+        <input id="txtEmail" type="email" formControlName="email" pInputText />
         <label for="txtEmail">Email</label>
       </span>
     </div>
     <div class="col-12 md:col-6 lg:col-2">
       <span class="p-float-label">
-        <input id="txtSenha" type="password" pInputText />
+        <input id="txtSenha" type="password" formControlName="senha" pInputText />
         <label for="txtSenha">Senha</label>
       </span>
     </div>
 
     <div class="col-12 md:col-6 lg:col-2">
       <span class="p-float-label">
-        <input id="txtConfirmaSenha" type="password" pInputText />
+        <input #confirmaSenha id="txtConfirmaSenha" type="password" (keyup)="validarSenha(confirmaSenha.value)" pInputText />
         <label for="txtConfirmaSenha">Confirmar senha</label>
       </span>
     </div>
@@ -43,29 +43,31 @@
   <div class="grid p-fluid">
     <div class="col-12 md:col-6 lg:col-2">
       <span class="p-float-label">
-        <input id="txtNomeSocial" type="text" pInputText />
+        <input id="txtNomeSocial" type="text" formControlName="nomeSocial" pInputText />
         <label for="txtNomeSocial">Nome Social</label>
       </span>
     </div>
     <div class="col-12 md:col-6 lg:col-2">
       <p-dropdown
-        id="dpSexo"
+        id="dpSexo" formControlName="sexo"
         [options]="optSexo"
         placeholder="Sexo"
         optionLabel="descricao"
+        optionValue="sigla"
+
       ></p-dropdown>
     </div>
   </div>
   <div class="grid p-fluid">
     <div class="col-12 md:col-6 lg:col-2">
       <span class="p-float-label">
-        <p-calendar></p-calendar>
+        <p-calendar formControlName="dtNascimento" ></p-calendar>
         <label for="txtSobrenome">Data de Nascimento</label>
       </span>
     </div>
     <div class="col-12 md:col-6 lg:col-2">
       <span class="p-float-label">
-        <p-inputMask id="txtCpf" mask="999.999.999-99"></p-inputMask>
+        <p-inputMask id="txtCpf" formControlName="cpf" mask="999.999.999-99"></p-inputMask>
         <label for="txtCpf">CPF</label>
       </span>
     </div>
@@ -74,14 +76,14 @@
   <div class="grid p-fluid">
     <div class="col-12 md:col-6 lg:col-2">
       <span class="p-float-label">
-        <p-inputMask id="txtCelular" mask="(99) 99999-9999"></p-inputMask>
+        <p-inputMask id="txtCelular" formControlName="telefone" mask="(99) 99999-9999"></p-inputMask>
         <label for="txtCelular">Telefone</label>
       </span>
     </div>
 
     <div class="col-12 md:col-6 lg:col-2">
       <span class="p-float-label">
-        <p-inputMask id="txtCrm" mask="99.999/aa"></p-inputMask>
+        <p-inputMask id="txtCrm" formControlName="crm" mask="99.999/aa"></p-inputMask>
         <label for="txtCrm">CRM</label>
       </span>
     </div>
@@ -94,6 +96,8 @@
         [options]="especialidades"
         placeholder="Especialidade"
         optionLabel="descricao"
+        optionValue="id"
+        formControlName="especialidade"
       ></p-dropdown>
     </div>
   </div>
@@ -113,7 +117,7 @@
     </div>
 
     <div class="col-12 md:col-6 lg:col-1">
-        <input id="txtNumero" type="text" formControlName="numero" placeholder="Número" pInputText />
+        <input id="txtNumero" type="text" formControlName="nroLogradouro" placeholder="Número" pInputText />
     </div>
 
     <div class="col-12 md:col-6 lg:col-2">
@@ -133,8 +137,12 @@
     <div class="col-12 md:col-6 lg:col-3">
         <input id="txtEstado" placeholder="Estado" formControlName="uf" type="text" pInputText />
     </div>
-
-
   </div>
+
+  <ng-template pTemplate="footer">
+
+    <button pButton pRipple type="button" label="Cadastrar" (click)="cadastrarMedico()" class="p-button-success"></button>
+
+  </ng-template>
 </p-card>
 </form>

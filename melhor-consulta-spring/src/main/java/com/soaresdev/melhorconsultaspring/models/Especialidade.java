@@ -16,7 +16,7 @@ public class Especialidade {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
-    private Long id;
+    private Integer id;
     private String sigla;
     private String descricao;
     private boolean situacao;

@@ -13,7 +13,6 @@ export class AcessoService {
   constructor(private http: HttpClient) {}
 
   cadastrarUsuarioPaciente(usuario: UsuarioCadastro): Observable<UsuarioCadastro> {
-    console.log(usuario);
     return this.http.post<UsuarioCadastro>(`${this.API}/cadastrarUsuario`, usuario);
   }
 

@@ -26,37 +26,38 @@
       <!-- CADASTRO  -->
 
       <p-tabPanel header="Criar Conta">
+        <form [formGroup]="formCadastro" novalidate>
           <div class="grid p-fluid">
             <div class="col -col-md-12">
 
               <div class="title-card">Crie sua conta de paciente</div>
 
               <span class="p-float-label">
-                <input id="txtNome" type="text" pInputText />
+                <input id="txtNome" formControlName="nome" type="text" pInputText />
                 <label for="txtNome">Nome</label>
               </span>
 
               <br/>
 
               <span class="p-float-label">
-                <input id="txtSobrenome" type="text" pInputText />
+                <input id="txtSobrenome" formControlName="sobrenome" type="text" pInputText />
                 <label for="txtSobrenome">Sobrenome</label>
               </span>
 
               <br/>
 
               <span class="p-float-label">
-                <input id="txtEmailCadastro" type="email" pInputText />
+                <input id="txtEmailCadastro" formControlName="email" type="email" pInputText />
                 <label for="txtEmailCadastro">Email</label>
               </span>
 
               <br/>
 
-              <p-password placeholder="Senha" weakLabel="Fraca" mediumLabel="Boa" strongLabel="Forte" [toggleMask]="true"></p-password>
+              <p-password placeholder="Senha" formControlName="senha" weakLabel="Fraca" mediumLabel="Boa" strongLabel="Forte" [toggleMask]="true"></p-password>
 
               <br/>
 
-              <p-dropdown [options]="optSexo" placeholder="Sexo" optionLabel="descricao" optionValue="sigla"></p-dropdown>
+              <p-dropdown [options]="optSexo" formControlName="sexo" placeholder="Sexo" optionLabel="descricao" optionValue="sigla"></p-dropdown>
 
               <br/>
 
@@ -69,10 +70,10 @@
 
             </div>
 
-            <button pButton pRipple type="button" label="Criar conta" class="p-button-primary"></button>
+            <button pButton pRipple type="button" label="Criar conta" (click)="cadastrarUsuario()" class="p-button-primary"></button>
 
           </div>
-
+        </form>
       </p-tabPanel>
     </p-tabView>
   </p-card>

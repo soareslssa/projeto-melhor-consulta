@@ -1,19 +1,32 @@
 <mat-toolbar color="primary">
-  <span>Sistema Melhor Consulta</span>
+  <span routerLink="/">Sistema Melhor Consulta</span>
   <span class="example-spacer"></span>
   <p-avatar icon="pi pi-user" styleClass="mr-2" shape="circle" size="large"></p-avatar>
+
   <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon"aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
+
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <button mat-menu-item [matMenuTriggerFor]="pacientesMenu">
       <mat-icon>person</mat-icon>
       <span>Paciente</span>
     </button>
-    <button mat-menu-item>
+
+    <mat-menu #pacientesMenu="matMenu">
+      <button mat-menu-item routerLink="/login">Entrar</button>
+      <button mat-menu-item routerLink="/login">Criar Conta</button>
+    </mat-menu>
+
+    <button mat-menu-item [matMenuTriggerFor]="profissionaisMenu">
       <mat-icon>medical_services</mat-icon>
       <span>Profissional</span>
     </button>
+
+    <mat-menu #profissionaisMenu="matMenu">
+      <button mat-menu-item routerLink="/login">Entrar</button>
+      <button mat-menu-item routerLink="/login">Criar Conta</button>
+    </mat-menu>
    </mat-menu>
 </mat-toolbar>
 <router-outlet></router-outlet>

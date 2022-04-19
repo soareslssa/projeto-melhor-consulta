@@ -1,4 +1,9 @@
+import { UsuarioAcesso, UsuarioCadastro } from './../../../../models/usuario';
+import { AcessoService } from './../../services/acesso.service';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Sexo } from 'src/app/models/sexo';
 
 @Component({
   selector: 'app-acesso-usuario',
@@ -7,15 +12,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AcessoUsuarioComponent implements OnInit {
 
+  optSexo: Sexo[];
+  formCadastro: FormGroup;
 
-  optSexo = [
-    { descricao: 'Masculino', sigla: 'M' },
-    { descricao: 'Feminino', sigla: 'F' },
-  ];
+  constructor( private fb: FormBuilder, private acessoService: AcessoService,
+    private router: Router) {
 
-  constructor() { }
+      this.formCadastro = fb.group({
+        nome: fb.control(''),
+        sobrenome: fb.control(''),
+        email: fb.control(''),
+        senha: fb.control(''),
+        sexo: fb.control(''),
+        dtNascimento: fb.control('')
+      });
+
+      this.optSexo = [
+        { descricao: 'Masculino', sigla: 'M' },
+        { descricao: 'Feminino', sigla: 'F' },
+      ];
+
+     }
 
   ngOnInit(): void {
+  }
+
+  cadastrarUsuario(){
+    const usuarioCadastro: UsuarioCadastro = {... this.formCadastro.value};
+
+    this.acessoService.cadastrarUsuarioPaciente(usuarioCadastro)
+        .subscribe(result =>{
+          console.log(result);
+        }
+        );
   }
 
 }

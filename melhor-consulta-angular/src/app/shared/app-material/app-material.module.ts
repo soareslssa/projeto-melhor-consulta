@@ -22,9 +22,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatTableModule,
     MatSortModule,
     MatToolbarModule,
-    MatMenuModule
-
-
+    MatMenuModule,
   ]
 })
 export class AppMaterialModule { }

@@ -2,8 +2,18 @@
   <span>Sistema Melhor Consulta</span>
   <span class="example-spacer"></span>
   <p-avatar icon="pi pi-user" styleClass="mr-2" shape="circle" size="large"></p-avatar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon"aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>person</mat-icon>
+      <span>Paciente</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>medical_services</mat-icon>
+      <span>Profissional</span>
+    </button>
+   </mat-menu>
 </mat-toolbar>
 <router-outlet></router-outlet>

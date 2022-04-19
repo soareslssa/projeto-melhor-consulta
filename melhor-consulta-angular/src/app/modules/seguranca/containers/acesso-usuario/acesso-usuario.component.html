@@ -1,0 +1,79 @@
+<div class="card" style="width: 30%; margin: 5% 0 0 35%">
+  <p-card>
+    <p-tabView>
+      <p-tabPanel header="Fazer Login">
+        <div class="grid p-fluid">
+          <div class="col col-md-12">
+            <div class="title-card">Acesse sua conta</div>
+
+            <span class="p-float-label">
+              <input id="txtEmail" type="email" pInputText />
+              <label for="txtEmail">Email</label>
+            </span>
+
+            <br />
+
+            <p-password placeholder="Senha" [feedback]="false" [toggleMask]="true"></p-password>
+
+            <br />
+          </div>
+
+          <button pButton pRipple type="button" label="Entrar" class="p-button-primary"></button>
+
+        </div>
+      </p-tabPanel>
+
+      <!-- CADASTRO  -->
+
+      <p-tabPanel header="Criar Conta">
+          <div class="grid p-fluid">
+            <div class="col -col-md-12">
+
+              <div class="title-card">Crie sua conta de paciente</div>
+
+              <span class="p-float-label">
+                <input id="txtNome" type="text" pInputText />
+                <label for="txtNome">Nome</label>
+              </span>
+
+              <br/>
+
+              <span class="p-float-label">
+                <input id="txtSobrenome" type="text" pInputText />
+                <label for="txtSobrenome">Sobrenome</label>
+              </span>
+
+              <br/>
+
+              <span class="p-float-label">
+                <input id="txtEmailCadastro" type="email" pInputText />
+                <label for="txtEmailCadastro">Email</label>
+              </span>
+
+              <br/>
+
+              <p-password placeholder="Senha" weakLabel="Fraca" mediumLabel="Boa" strongLabel="Forte" [toggleMask]="true"></p-password>
+
+              <br/>
+
+              <p-dropdown [options]="optSexo" placeholder="Sexo" optionLabel="descricao" optionValue="sigla"></p-dropdown>
+
+              <br/>
+
+              <span class="p-float-label">
+                <p-calendar formControlName="dtNascimento" ></p-calendar>
+                <label for="txtSobrenome">Data de Nascimento</label>
+              </span>
+
+              <br/>
+
+            </div>
+
+            <button pButton pRipple type="button" label="Criar conta" class="p-button-primary"></button>
+
+          </div>
+
+      </p-tabPanel>
+    </p-tabView>
+  </p-card>
+</div>

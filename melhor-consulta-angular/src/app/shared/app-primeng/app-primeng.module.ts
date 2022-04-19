@@ -13,6 +13,9 @@ import {StepsModule} from 'primeng/steps';
 import {AvatarModule} from 'primeng/avatar';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {DividerModule} from 'primeng/divider';
+import {TabViewModule} from 'primeng/tabview';
+import {PasswordModule} from 'primeng/password';
+import {RadioButtonModule} from 'primeng/radiobutton';
 
 @NgModule({
   exports: [
@@ -29,7 +32,10 @@ import {DividerModule} from 'primeng/divider';
     StepsModule,
     AvatarModule,
     InputNumberModule,
-    DividerModule
+    DividerModule,
+    TabViewModule,
+    PasswordModule,
+    RadioButtonModule
   ],
 })
 export class AppPrimengModule {}

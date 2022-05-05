@@ -1,12 +1,13 @@
-import { Medico, MedicoRequest } from './../../../../models/medico';
-import { MedicosService } from './../../services/medicos.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { UtilsService } from './../../../../shared/services/utils.service';
-import { Especialidade } from './../../../../models/especialidade';
-import { EspecialidadesService } from './../../../consultas/services/especialidades.service';
 import { Component, OnInit } from '@angular/core';
-import { Sexo } from 'src/app/models/sexo';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Sexo } from 'src/app/models/sexo';
+
+import { Especialidade } from './../../../../models/especialidade';
+import { MedicoRequest } from './../../../../models/medico';
+import { UtilsService } from './../../../../shared/services/utils.service';
+import { EspecialidadesService } from './../../../consultas/services/especialidades.service';
+import { MedicosService } from './../../services/medicos.service';
 
 @Component({
   selector: 'app-cadastro-medicos',
@@ -69,7 +70,7 @@ export class CadastroMedicosComponent implements OnInit {
   cadastrarMedico() {
     const novoMedico: MedicoRequest = {... this.form.value};
     this.medicosService.adicionarMedico(novoMedico)
-        .subscribe(result =>{
+        .subscribe(_result =>{
           this.router.navigate(['/consultas']);
         }
         );

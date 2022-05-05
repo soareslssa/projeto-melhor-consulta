@@ -1,9 +1,11 @@
-import { UsuarioAcesso, UsuarioCadastro } from './../../../../models/usuario';
-import { AcessoService } from './../../services/acesso.service';
+import { UsuarioAcesso } from 'src/app/models/usuario';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Sexo } from 'src/app/models/sexo';
+
+import { UsuarioCadastro } from './../../../../models/usuario';
+import { AcessoService } from './../../services/acesso.service';
 
 @Component({
   selector: 'app-acesso-usuario',
@@ -45,6 +47,12 @@ export class AcessoUsuarioComponent implements OnInit {
           console.log(result);
         }
         );
+  }
+
+  onLogin(){
+    var _acesso: UsuarioAcesso = {... this.formCadastro.value};
+    this.acessoService.logar(_acesso)
+    .subscribe(result => console.log(result));
   }
 
 }

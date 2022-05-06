@@ -3,6 +3,7 @@ import { EspecialidadeRoutingModule } from './especialidades-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ManterEspecialidadeComponent } from './conteiners/manter-especialidade/manter-especialidade.component';
+import { ConfirmationService } from 'primeng/api';
 
 
 
@@ -12,8 +13,11 @@ import { ManterEspecialidadeComponent } from './conteiners/manter-especialidade/
   ],
   imports: [
     CommonModule,
-    SharedModule,
-    EspecialidadeRoutingModule
+    EspecialidadeRoutingModule,
+    SharedModule
+  ],
+  providers: [
+    ConfirmationService
   ]
 })
 export class EspecialidadesModule { }

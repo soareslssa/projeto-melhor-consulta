@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ManterEspecialidadeComponent } from './conteiners/manter-especialidade/manter-especialidade.component';
 
 const routes: Routes = [
-  { path: 'manter', component: ManterEspecialidadeComponent },
+  { path: '', component: ManterEspecialidadeComponent },
 ];
 
 @NgModule({

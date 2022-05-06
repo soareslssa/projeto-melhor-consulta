@@ -1,9 +1,10 @@
-import { EspecialidadeRequest } from './../../../../models/especialidade';
-import { Especialidade } from 'src/app/models/especialidade';
-import { EspecialidadesService } from './../../../consultas/services/especialidades.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ConfirmationService } from 'primeng/api';
+import { Especialidade } from 'src/app/models/especialidade';
+import { EspecialidadeRequest } from './../../../../models/especialidade';
+import { EspecialidadesService } from './../../../consultas/services/especialidades.service';
 
 @Component({
   selector: 'app-manter-especialidade',
@@ -16,7 +17,7 @@ export class ManterEspecialidadeComponent implements OnInit {
   especialidades: Especialidade[];
 
   constructor(private fb: FormBuilder, private especialidadeService: EspecialidadesService,
-    private router: Router) {
+    private router: Router, private confirmationService: ConfirmationService) {
 
     this._form = fb.group({
       sigla: fb.control(''),
@@ -32,10 +33,16 @@ export class ManterEspecialidadeComponent implements OnInit {
         .subscribe(data => this.listarEspecialidades());
   }
 
-  onDelete(id: number){
-    this.especialidadeService.delete(id).subscribe(
-      data => this.listarEspecialidades()
-    )
+  onDelete(id: number) {
+
+    this.confirmationService.confirm({
+      message: "Tem certeza que deseja excluir esta Especialidade?",
+      accept: () => {
+        this.especialidadeService.delete(id).subscribe(
+          data => this.listarEspecialidades()
+        );
+      }
+    });
   }
 
 

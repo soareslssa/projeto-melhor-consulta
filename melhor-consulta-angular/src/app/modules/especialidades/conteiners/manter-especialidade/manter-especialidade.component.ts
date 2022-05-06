@@ -32,6 +32,12 @@ export class ManterEspecialidadeComponent implements OnInit {
         .subscribe(data => this.listarEspecialidades());
   }
 
+  onDelete(id: number){
+    this.especialidadeService.delete(id).subscribe(
+      data => this.listarEspecialidades()
+    )
+  }
+
 
   ngOnInit(): void {
    this.listarEspecialidades();
@@ -39,7 +45,7 @@ export class ManterEspecialidadeComponent implements OnInit {
 
   listarEspecialidades(){
     this.especialidadeService.list().subscribe(data => {
-      this.especialidades = data; console.log(data) });
+      this.especialidades = data});
   }
 
 

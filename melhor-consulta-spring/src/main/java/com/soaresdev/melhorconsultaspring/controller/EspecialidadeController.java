@@ -30,7 +30,7 @@ public class EspecialidadeController {
 
     @PostMapping
     public void inserirEspecialidade(@RequestBody EspecialidadeDTO dto){
-        Especialidade novaEspecialidade = new Especialidade(dto.getSigla(), dto.getDescricao(), dto.isSituacao());
+        Especialidade novaEspecialidade = new Especialidade(dto.getSigla().toUpperCase(), dto.getDescricao(), dto.isSituacao());
         this.especialidadeRepository.save(novaEspecialidade);
     }
 

@@ -7,3 +7,10 @@ export interface Especialidade {
   situacao: boolean
 
 }
+
+export interface EspecialidadeRequest{
+  sigla: string,
+  descricao: string,
+  situacao: boolean,
+  medicoId: number
+}

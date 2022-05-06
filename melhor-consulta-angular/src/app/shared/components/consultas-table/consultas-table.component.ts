@@ -1,9 +1,8 @@
-import { UtilsService } from './../../services/utils.service';
-import { Estado } from './../../../models/estado';
 import { Component, OnInit } from '@angular/core';
+import { Estado } from './../../../models/estado';
 import { GradeConsulta } from './../../../models/gradeConsulta';
 import { GradeConsultaService } from './../../../modules/consultas/services/grade-consulta.service';
-import { MessageService } from 'primeng/api';
+import { UtilsService } from './../../services/utils.service';
 
 @Component({
   selector: 'app-consultas-table',

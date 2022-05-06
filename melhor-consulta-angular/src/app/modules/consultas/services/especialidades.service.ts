@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { EspecialidadeRequest } from './../../../models/especialidade';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Especialidade } from 'src/app/models/especialidade';
@@ -13,6 +15,10 @@ export class EspecialidadesService {
 
   list() {
     return this.httpClient.get<Especialidade[]>(this.API);
+  }
+
+  add(record: EspecialidadeRequest): Observable<EspecialidadeRequest>{
+    return this.httpClient.post<EspecialidadeRequest>(this.API, record);
   }
 }
 

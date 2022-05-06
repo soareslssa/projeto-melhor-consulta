@@ -1,5 +1,6 @@
 package com.soaresdev.melhorconsultaspring.controller;
 
+import com.soaresdev.melhorconsultaspring.dto.EspecialidadeDTO;
 import com.soaresdev.melhorconsultaspring.models.Especialidade;
 import com.soaresdev.melhorconsultaspring.repository.EspecialidadeRepository;
 import lombok.AllArgsConstructor;
@@ -28,7 +29,8 @@ public class EspecialidadeController {
     }
 
     @PostMapping
-    public void inserirEspecialidade(@RequestBody Especialidade novaEspecialidade){
+    public void inserirEspecialidade(@RequestBody EspecialidadeDTO dto){
+        Especialidade novaEspecialidade = new Especialidade(dto.getSigla(), dto.getDescricao(), dto.isSituacao());
         this.especialidadeRepository.save(novaEspecialidade);
     }
 

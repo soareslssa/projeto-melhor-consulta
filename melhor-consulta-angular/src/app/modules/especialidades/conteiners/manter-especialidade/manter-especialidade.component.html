@@ -1,0 +1,50 @@
+<form [formGroup]="_form" novalidate>
+  <p-card header="Especialidades">
+
+    <div class="grid p-fluid" style="margin-top: 1em;">
+      <div class="col-12 md:col-12 lg:col-1">
+        <span class="p-float-label">
+          <input id="txtNome" type="text" pInputText formControlName="sigla" />
+          <label for="txtNome">Sigla</label>
+        </span>
+      </div>
+      <div class="col-12 md:col-6 lg:col-4">
+        <span class="p-float-label">
+          <input id="txtSobrenome" type="text" formControlName="descricao" pInputText />
+          <label for="txtSobrenome">Descricao</label>
+        </span>
+      </div>
+      <div class="col-12 md:col-6 lg:col-1">
+        <p-inputSwitch formControlName="situacao"></p-inputSwitch>
+      </div>
+      <div class="col-12 md:col-6 lg:col-1">
+        <p-button label="Gravar" icon="pi pi-plus" (click)="onAdd()"></p-button>
+      </div>
+    </div>
+
+
+
+
+    <br />
+    <br />
+
+    <p-table [value]="especialidades" responsiveLayout="scroll">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Sigla</th>
+          <th>Descrição</th>
+          <th>Situação</th>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-item>
+        <tr>
+          <td>{{item.sigla}}</td>
+          <td>{{item.descricao}}</td>
+          <td> <p-inputSwitch formControlName="situacao" [readonly]="true"></p-inputSwitch></td>
+          <td><button pButton pRipple  icon="pi pi-trash" class="p-button-danger"></button></td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-card>
+</form>

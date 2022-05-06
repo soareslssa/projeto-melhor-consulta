@@ -17,6 +17,7 @@ import {TabViewModule} from 'primeng/tabview';
 import {PasswordModule} from 'primeng/password';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import {ToastModule} from 'primeng/toast';
+import {InputSwitchModule} from 'primeng/inputswitch';
 
 @NgModule({
   exports: [
@@ -37,7 +38,8 @@ import {ToastModule} from 'primeng/toast';
     TabViewModule,
     PasswordModule,
     RadioButtonModule,
-    ToastModule
+    ToastModule,
+    InputSwitchModule
   ],
 })
 export class AppPrimengModule {}

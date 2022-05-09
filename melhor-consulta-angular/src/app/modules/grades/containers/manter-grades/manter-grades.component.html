@@ -1,1 +1,40 @@
-<p>manter-grades works!</p>
+<form [formGroup]="form" novalidate>
+  <p-card header="Grades de Agendamento">
+    <div class="grid p-fluid" style="margin-top: 1em;">
+      <div class="col-12 md:col-12 lg:col-3">
+        <p-dropdown id="ddEspecialidade" placeholder="Especialidade" [options]="especialidades"
+          formControlName="especialidade" optionLabel="descricao"></p-dropdown>
+      </div>
+
+      <div class="col-12 md:col-12 lg:col-3">
+        <p-calendar id="dtConsulta" placeholder="Datas Disponíveis" formControlName="dtConsulta"
+          selectionMode="multiple" dateFormat="dd-mm-yy" [showIcon]="true" [readonlyInput]="true" inputId="multiple"
+          [disabledDays]="[0,6]" [showButtonBar]="true">
+        </p-calendar>
+      </div>
+
+    </div>
+
+    <div class="grid p-fluid">
+      <div class="col-12 md:col-12 lg:col-3">
+        <p-calendar placeholder="Hora Início" formControlName="hrInicio" [stepMinute]="10" [timeOnly]="true" hourFormat="24"
+          [showTime]="true">
+        </p-calendar>
+      </div>
+
+      <div class="col-12 md:col-12 lg:col-3">
+        <p-calendar placeholder="Hora Fim" formControlName="hrFim" [timeOnly]="true" [stepMinute]="10" hourFormat="24" [showTime]="true">
+        </p-calendar>
+      </div>
+
+      <div class="col-12 md:col-12 lg:col-2">
+        <p-calendar placeholder="Tempo Consulta" formControlName="tempoConsulta" [timeOnly]="true" [stepMinute]="30" hourFormat="24" [showTime]="true">
+        </p-calendar>
+      </div>
+
+      <div class="col-12 md:col-6 lg:col-1">
+        <p-button label="Gravar" icon="pi pi-plus" (click)="onAdd()"></p-button>
+      </div>
+    </div>
+  </p-card>
+</form>

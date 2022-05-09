@@ -22,6 +22,11 @@ public class MedicosService {
 
     }
 
+    public Medico obterPorId(Long id){
+        return repository.getById(id);
+    }
+
+
     private Medico obterMedicoEntity(MedicoDTO dto) {
         Medico medico = new Medico();
         medico.setNome(dto.getNome());

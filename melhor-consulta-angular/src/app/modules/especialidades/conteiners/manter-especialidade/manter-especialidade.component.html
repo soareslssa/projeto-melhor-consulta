@@ -41,15 +41,17 @@
         <tr>
           <td>{{item.sigla}}</td>
           <td>{{item.descricao}}</td>
-          <td> <p-inputSwitch formControlName="situacao" [readonly]="true"></p-inputSwitch></td>
           <td>
-
-            <p-confirmDialog header="Atenção!" icon="pi pi-exclamation-triangle" acceptLabel="Sim" (closable)="true" rejectLabel="Não"></p-confirmDialog>
-            <button pButton pRipple  icon="pi pi-trash" class="p-button-danger" (click)="onDelete(item.id)"></button>
-
+            <p-inputSwitch formControlName="situacao" [readonly]="true"></p-inputSwitch>
+          </td>
+          <td>
+            <button pButton pRipple icon="pi pi-trash" class="p-button-danger" (click)="onDelete(item.id)"></button>
           </td>
         </tr>
       </ng-template>
     </p-table>
   </p-card>
+
+  <p-confirmDialog header="Atenção!" icon="pi pi-exclamation-triangle" acceptLabel="Sim" (closable)="true"
+    rejectLabel="Não"></p-confirmDialog>
 </form>

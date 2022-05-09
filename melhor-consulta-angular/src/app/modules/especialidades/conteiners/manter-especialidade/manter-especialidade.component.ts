@@ -19,6 +19,10 @@ export class ManterEspecialidadeComponent implements OnInit {
   constructor(private fb: FormBuilder, private especialidadeService: EspecialidadesService,
     private router: Router, private confirmationService: ConfirmationService) {
 
+    this.limparCampos(fb);
+  }
+
+  private limparCampos(fb: FormBuilder) {
     this._form = fb.group({
       sigla: fb.control(''),
       descricao: fb.control(''),
@@ -27,10 +31,13 @@ export class ManterEspecialidadeComponent implements OnInit {
     });
   }
 
-  onAdd(){
-    let especialidade: EspecialidadeRequest = {... this._form.value};
+  onAdd() {
+    let especialidade: EspecialidadeRequest = { ... this._form.value };
     this.especialidadeService.add(especialidade)
-        .subscribe(data => this.listarEspecialidades());
+      .subscribe(data => {
+        this.listarEspecialidades();
+        this.limparCampos(this.fb)
+      });
   }
 
   onDelete(id: number) {
@@ -47,12 +54,13 @@ export class ManterEspecialidadeComponent implements OnInit {
 
 
   ngOnInit(): void {
-   this.listarEspecialidades();
+    this.listarEspecialidades();
   }
 
-  listarEspecialidades(){
+  listarEspecialidades() {
     this.especialidadeService.list().subscribe(data => {
-      this.especialidades = data});
+      this.especialidades = data
+    });
   }
 
 

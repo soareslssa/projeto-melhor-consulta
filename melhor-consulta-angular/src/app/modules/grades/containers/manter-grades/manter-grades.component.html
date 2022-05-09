@@ -28,8 +28,7 @@
       </div>
 
       <div class="col-12 md:col-12 lg:col-2">
-        <p-calendar placeholder="Tempo Consulta" formControlName="tempoConsulta" [timeOnly]="true" [stepMinute]="30" hourFormat="24" [showTime]="true">
-        </p-calendar>
+        <p-inputNumber formControlName="tempoConsulta" placeholder="Tempo Consulta" mode="decimal" suffix="H" [showButtons]="true" inputId="minmax-buttons" [min]="1" [max]="4"></p-inputNumber>
       </div>
 
       <div class="col-12 md:col-6 lg:col-1">

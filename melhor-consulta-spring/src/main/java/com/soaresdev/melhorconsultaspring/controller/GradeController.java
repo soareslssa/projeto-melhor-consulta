@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
+
 @RestController
 @RequestMapping("/api/grades")
 @AllArgsConstructor
@@ -16,7 +18,7 @@ public class GradeController {
     private final GradeConsultaService service;
 
     @PostMapping
-    public void inserirGrade(@RequestBody GradeDTO gradeDTO){
+    public void inserirGrade(@RequestBody GradeDTO gradeDTO) throws ParseException {
         service.save(gradeDTO);
     }
 }

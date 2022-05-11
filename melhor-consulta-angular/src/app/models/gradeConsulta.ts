@@ -11,3 +11,13 @@ export interface GradeConsulta{
   valor: number,
   consultas: Consulta[]
 }
+
+export interface GradeRequest{
+  id?: number,
+  espId: number,
+  medicoId: number,
+  tempoConsulta: number,
+  dtConsulta: string[],
+  hrInicio: string,
+  hrFim: string
+}

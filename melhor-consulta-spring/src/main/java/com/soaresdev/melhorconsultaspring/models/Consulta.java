@@ -26,7 +26,7 @@ public class Consulta {
     private GradeConsulta gradeConsulta;
     private Date horarioConsulta;
     private Date dtMarcacao;
-    private DominioSituacaoConsulta situacao;
+    private String situacao;
 
 
 }

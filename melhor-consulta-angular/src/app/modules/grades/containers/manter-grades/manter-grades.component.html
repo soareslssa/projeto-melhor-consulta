@@ -3,11 +3,11 @@
     <div class="grid p-fluid" style="margin-top: 1em;">
       <div class="col-12 md:col-12 lg:col-3">
         <p-dropdown id="ddEspecialidade" placeholder="Especialidade" [options]="especialidades"
-          formControlName="especialidade" optionLabel="descricao"></p-dropdown>
+          formControlName="espId" optionLabel="descricao" optionValue="id"></p-dropdown>
       </div>
 
       <div class="col-12 md:col-12 lg:col-3">
-        <p-calendar id="dtConsulta" placeholder="Datas Disponíveis" formControlName="dtConsulta"
+        <p-calendar id="dtConsulta" placeholder="Datas Disponíveis" dataType="string" formControlName="dtConsulta"
           selectionMode="multiple" dateFormat="dd-mm-yy" [showIcon]="true" [readonlyInput]="true" inputId="multiple"
           [disabledDays]="[0,6]" [showButtonBar]="true">
         </p-calendar>
@@ -17,13 +17,13 @@
 
     <div class="grid p-fluid">
       <div class="col-12 md:col-12 lg:col-3">
-        <p-calendar placeholder="Hora Início" formControlName="hrInicio" [stepMinute]="10" [timeOnly]="true" hourFormat="24"
+        <p-calendar placeholder="Hora Início" dataType="string" dateFormat="hh" formControlName="hrInicio" [stepMinute]="10" [timeOnly]="true" hourFormat="24"
           [showTime]="true">
         </p-calendar>
       </div>
 
       <div class="col-12 md:col-12 lg:col-3">
-        <p-calendar placeholder="Hora Fim" formControlName="hrFim" [timeOnly]="true" [stepMinute]="10" hourFormat="24" [showTime]="true">
+        <p-calendar placeholder="Hora Fim" dataType="string"  formControlName="hrFim" dateFormat="hh" [timeOnly]="true" [stepMinute]="10" hourFormat="24" [showTime]="true">
         </p-calendar>
       </div>
 
@@ -35,5 +35,29 @@
         <p-button label="Gravar" icon="pi pi-plus" (click)="onAdd()"></p-button>
       </div>
     </div>
+
+    <br/>
+    <br/>
+
+    <p-table  responsiveLayout="scroll">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>ID</th>
+              <th>Especialidade</th>
+              <th>Data Consulta</th>
+              <th>Hora Consulta</th>
+              <th></th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+          <tr>
+              <td>{{product.code}}</td>
+              <td>{{product.name}}</td>
+              <td>{{product.category}}</td>
+              <td>{{product.quantity}}</td>
+          </tr>
+      </ng-template>
+  </p-table>
+
   </p-card>
 </form>

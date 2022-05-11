@@ -5,6 +5,7 @@ import com.soaresdev.melhorconsultaspring.models.Especialidade;
 import com.soaresdev.melhorconsultaspring.models.Medico;
 import com.soaresdev.melhorconsultaspring.repository.ConsultaRepository;
 import com.soaresdev.melhorconsultaspring.repository.EspecialidadeRepository;
+import com.soaresdev.melhorconsultaspring.repository.GradeRepository;
 import com.soaresdev.melhorconsultaspring.repository.MedicoRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,10 +24,10 @@ public class MelhorConsultaSpringApplication {
 	}
 
 	@Bean
-	CommandLineRunner initDatabase(EspecialidadeRepository especialidadeRepository, ConsultaRepository consultaRepository, MedicoRepository medicoRepository){
+	CommandLineRunner initDatabase(EspecialidadeRepository especialidadeRepository, GradeRepository gradeRepository, MedicoRepository medicoRepository){
 		return args -> {
 			especialidadeRepository.deleteAll();
-			consultaRepository.deleteAll();
+			gradeRepository.deleteAll();
 			medicoRepository.deleteAll();
 
 			Especialidade e = new Especialidade("CAR","Cardiologia",true);
@@ -95,27 +96,27 @@ public class MelhorConsultaSpringApplication {
 			m3.setEspecialidades(espCardio);
 			m3.setNotaAvaliacao(3);
 
-			GradeConsulta c = new GradeConsulta();
-			c.setCriadoEm(new Date());
-			c.setEspecialidade(e);
-			c.setSituacao(true);
-			c.setMedico(m1);
-			c.setValor(140.0);
+			GradeConsulta g = new GradeConsulta();
+			g.setCriadoEm(new Date());
+			g.setEspecialidade(e);
+			g.setSituacao(true);
+			g.setMedico(m1);
+			g.setValor(140.0);
 
-			GradeConsulta c3 = new GradeConsulta();
-			c3.setCriadoEm(new Date());
-			c3.setEspecialidade(e);
-			c3.setSituacao(true);
-			c3.setMedico(m2);
-			c3.setValor(150.0);
+			GradeConsulta g3 = new GradeConsulta();
+			g3.setCriadoEm(new Date());
+			g3.setEspecialidade(e);
+			g3.setSituacao(true);
+			g3.setMedico(m2);
+			g3.setValor(150.0);
 
-			GradeConsulta c2 = new GradeConsulta();
-			c2.setId(1L);
-			c2.setEspecialidade(e2);
-			c2.setSituacao(true);
-			c2.setMedico(m3);
-			c2.setCriadoEm(new Date());
-			c2.setValor(300.0);
+			GradeConsulta g2 = new GradeConsulta();
+			g2.setId(1L);
+			g2.setEspecialidade(e2);
+			g2.setSituacao(true);
+			g2.setMedico(m3);
+			g2.setCriadoEm(new Date());
+			g2.setValor(300.0);
 
 			especialidadeRepository.save(e);
 			especialidadeRepository.save(e2);
@@ -125,9 +126,9 @@ public class MelhorConsultaSpringApplication {
 			medicoRepository.save(m2);
 			medicoRepository.save(m3);
 
-			consultaRepository.save(c);
-			consultaRepository.save(c2);
-			consultaRepository.save(c3);
+			gradeRepository.save(g);
+			gradeRepository.save(g2);
+			gradeRepository.save(g3);
 
 		};
 	}

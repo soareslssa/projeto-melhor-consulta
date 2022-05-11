@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Sexo } from 'src/app/models/sexo';
-
+import { EspecialidadesService } from 'src/app/modules/especialidades/services/especialidades.service';
 import { Especialidade } from './../../../../models/especialidade';
 import { MedicoRequest } from './../../../../models/medico';
 import { UtilsService } from './../../../../shared/services/utils.service';
-import { EspecialidadesService } from './../../../consultas/services/especialidades.service';
 import { MedicosService } from './../../services/medicos.service';
+
 
 @Component({
   selector: 'app-cadastro-medicos',

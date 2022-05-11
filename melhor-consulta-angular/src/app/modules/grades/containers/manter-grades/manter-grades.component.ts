@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { EspecialidadesService } from 'src/app/modules/especialidades/services/especialidades.service';
 import { Especialidade } from './../../../../models/especialidade';
 import { GradeRequest } from './../../../../models/gradeConsulta';
-import { EspecialidadesService } from './../../../consultas/services/especialidades.service';
 import { GradesService } from './../../services/grades.service';
 
 @Component({
@@ -34,7 +34,6 @@ export class ManterGradesComponent implements OnInit {
       dtConsulta: this.fb.control([]),
       hrInicio: this.fb.control(''),
       hrFim: this.fb.control(''),
-      tempoConsulta: this.fb.control('1'),
       medicoId: this.fb.control(4)
     });
   }

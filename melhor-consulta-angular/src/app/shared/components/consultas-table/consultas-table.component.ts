@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Estado } from './../../../models/estado';
 import { GradeConsulta } from './../../../models/gradeConsulta';
-import { GradeConsultaService } from './../../../modules/consultas/services/grade-consulta.service';
+import { GradesService } from './../../../modules/grades/services/grades.service';
 import { UtilsService } from './../../services/utils.service';
 
 @Component({
@@ -21,10 +21,10 @@ export class ConsultasTableComponent implements OnInit {
 
 
   ngOnInit() {
-      this.gradeConsultaService.listarGrades().subscribe(data => this.grades = data);
+      this.gradesService.list().subscribe(data => this.grades = data);
       this.utilsService.listarEstados().subscribe(data => this.estados = data);
   }
 
-  constructor(private gradeConsultaService: GradeConsultaService,
+  constructor(private gradesService: GradesService,
     private utilsService: UtilsService) {}
 }

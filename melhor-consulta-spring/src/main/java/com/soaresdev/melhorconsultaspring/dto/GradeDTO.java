@@ -13,5 +13,4 @@ public class GradeDTO {
     private List<String> dtConsulta;
     private String hrInicio;
     private String hrFim;
-    private String tempoConsulta;
 }

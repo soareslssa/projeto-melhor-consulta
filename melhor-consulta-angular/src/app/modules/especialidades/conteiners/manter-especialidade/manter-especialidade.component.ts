@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmationService } from 'primeng/api';
 import { Especialidade } from 'src/app/models/especialidade';
+import { EspecialidadesService } from '../../services/especialidades.service';
 import { EspecialidadeRequest } from './../../../../models/especialidade';
-import { EspecialidadesService } from './../../../consultas/services/especialidades.service';
 
 @Component({
   selector: 'app-manter-especialidade',

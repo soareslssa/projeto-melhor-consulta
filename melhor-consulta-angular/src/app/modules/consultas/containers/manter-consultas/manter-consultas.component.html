@@ -22,10 +22,13 @@
         </td>
         <td>
           <button pButton pRipple type="button" label="Agendar Paciente" icon="pi pi-calendar-plus" class="button-acao p-button-rounded p-button-info p-button-outlined"></button>
-          <button pButton pRipple type="button" label="Excluir" icon="pi pi-trash" class="button-acao p-button-rounded p-button-danger p-button-outlined"></button>
+          <button pButton pRipple type="button" (click)="onDelete(consulta.id)" label="Excluir" icon="pi pi-trash" class="button-acao p-button-rounded p-button-danger p-button-outlined"></button>
         </td>
       </tr>
     </ng-template>
   </p-table>
+
+  <p-confirmDialog header="Atenção!" icon="pi pi-exclamation-triangle" acceptLabel="Sim" (closable)="true"
+  rejectLabel="Não"></p-confirmDialog>
 
 </p-card>

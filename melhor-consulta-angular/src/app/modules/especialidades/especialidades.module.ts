@@ -15,9 +15,6 @@ import { ConfirmationService } from 'primeng/api';
     CommonModule,
     EspecialidadeRoutingModule,
     SharedModule
-  ],
-  providers: [
-    ConfirmationService
   ]
 })
 export class EspecialidadesModule { }

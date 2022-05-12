@@ -18,7 +18,7 @@
         <p-inputSwitch formControlName="situacao"></p-inputSwitch>
       </div>
       <div class="col-12 md:col-6 lg:col-1">
-        <p-button label="Gravar" icon="pi pi-plus" (click)="onAdd()"></p-button>
+        <p-button label="Gravar" icon="pi pi-save" (click)="onAdd()"></p-button>
       </div>
     </div>
 
@@ -45,7 +45,8 @@
             <p-inputSwitch formControlName="situacao" [readonly]="true"></p-inputSwitch>
           </td>
           <td>
-            <button pButton pRipple icon="pi pi-trash" class="p-button-danger" (click)="onDelete(item.id)"></button>
+            <button pButton pRipple type="button" label="Excluir" icon="pi pi-trash" (click)="onDelete(item.id)"
+              class="button-acao p-button-rounded p-button-danger p-button-outlined"></button>
           </td>
         </tr>
       </ng-template>

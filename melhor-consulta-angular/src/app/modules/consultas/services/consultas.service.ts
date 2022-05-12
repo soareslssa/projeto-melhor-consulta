@@ -16,4 +16,7 @@ export class ConsultasService {
     return this.httpClient.get<Consulta[]>(this.API);
   }
 
+  delete(id: number): Observable<any> {
+    return this.httpClient.delete(`${this.API}?id=${id}`);
+  }
 }

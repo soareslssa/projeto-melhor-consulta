@@ -1,6 +1,7 @@
 import { ConsultasService } from '../../services/consultas.service';
 import { Consulta } from '../../../../models/consulta';
 import { Component, OnInit } from '@angular/core';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-manter-consultas',
@@ -11,7 +12,7 @@ export class ManterConsultasComponent implements OnInit {
 
   consultas: Consulta[];
 
-  constructor(private consultasService: ConsultasService) { }
+  constructor(private consultasService: ConsultasService, private confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
     this.obterConsultas();
@@ -21,6 +22,16 @@ export class ManterConsultasComponent implements OnInit {
     this.consultasService.list().subscribe(
       data =>{ this.consultas = data; console.log(data)}
     );
+  }
+
+  onDelete(id: number){
+    this.confirmationService.confirm({
+      message: "Tem certeza que deseja excluir este Horário?",
+      accept: () => {
+        this.consultasService.delete(id).subscribe(data => this.obterConsultas());
+      }
+    });
+
   }
 
 }

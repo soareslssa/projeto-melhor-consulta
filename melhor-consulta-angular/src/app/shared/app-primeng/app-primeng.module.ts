@@ -19,6 +19,8 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {ToastModule} from 'primeng/toast';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {BadgeModule} from 'primeng/badge';
+
 
 @NgModule({
   exports: [
@@ -41,7 +43,8 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
     RadioButtonModule,
     ToastModule,
     InputSwitchModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    BadgeModule
 
   ],
 })

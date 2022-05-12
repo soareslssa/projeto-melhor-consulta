@@ -23,7 +23,7 @@ public class ConsultaService {
 
     private final ConsultaRepository consultaRepository;
 
-    public List<Consulta> gerarConsultasPorDia(GradeDTO gradeDTO, GradeConsulta gradeConsulta) throws ParseException {
+    public void gerarConsultasPorDia(GradeDTO gradeDTO, GradeConsulta gradeConsulta) throws ParseException {
         LocalDateTime hrInicial = LocalDateTime.now().with(LocalTime.of(Integer.parseInt(gradeDTO.getHrInicio().substring(0,2)),0));
         LocalDateTime hrFinal =LocalDateTime.now().with(LocalTime.of(Integer.parseInt(gradeDTO.getHrFim().substring(0,2)),0));
         long qtHorarios = Duration.between(hrInicial,hrFinal).toHours();
@@ -36,6 +36,7 @@ public class ConsultaService {
                 horario.setHours(hrInicial.getHour() + i);
 
                 Consulta consulta = new Consulta();
+                consulta.setGradeConsulta(gradeConsulta);
                 consulta.setSituacao(DominioSituacaoConsulta.LIVRE.getCodigo());
                 consulta.setMedico(gradeConsulta.getMedico());
                 consulta.setDtMarcacao(new SimpleDateFormat("dd-MM-yyyy").parse(dataConsulta));
@@ -46,6 +47,5 @@ public class ConsultaService {
         }
 
         consultaRepository.saveAll(consultasPorDia);
-        return consultasPorDia;
     }
 }

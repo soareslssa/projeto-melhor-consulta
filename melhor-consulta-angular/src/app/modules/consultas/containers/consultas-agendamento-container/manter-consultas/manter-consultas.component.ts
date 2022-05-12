@@ -19,7 +19,7 @@ export class ManterConsultasComponent implements OnInit {
 
   obterConsultas(){
     this.consultasService.list().subscribe(
-      data =>{ this.consultas = data; console.log(this.consultas)}
+      data =>{ this.consultas = data; console.log(data)}
     );
   }
 

@@ -24,8 +24,9 @@ public class GradeConsultaService {
         grade.setEspecialidade(especialidadeService.obterPorId(dto.getEspId()));
         grade.setSituacao(true);
         grade.setCriadoEm(new Date());
-        grade.setConsultas(consultaService.gerarConsultasPorDia(dto, grade));
-        gradeRepository.saveAndFlush(grade);
+
+        gradeRepository.save(grade);
+        consultaService.gerarConsultasPorDia(dto, grade);
     }
 
 

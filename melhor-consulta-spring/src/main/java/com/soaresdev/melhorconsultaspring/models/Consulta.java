@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import java.util.Date;
@@ -23,6 +24,7 @@ public class Consulta {
     @OneToOne
     private Medico medico;
     @ManyToOne
+    @JoinColumn(name = "GRADE_ID", referencedColumnName = "ID")
     private GradeConsulta gradeConsulta;
     private Date horarioConsulta;
     private Date dtMarcacao;

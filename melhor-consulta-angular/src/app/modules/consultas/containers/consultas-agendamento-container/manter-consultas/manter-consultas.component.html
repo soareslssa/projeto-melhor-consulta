@@ -1,23 +1,28 @@
 <p-card header="Horários Disponíveis">
   <p-table [value]="consultas" responsiveLayout="scroll">
     <ng-template pTemplate="header">
-        <tr>
-            <th>Id</th>
-            <th>Especialidade</th>
-            <th>Data / Horário</th>
-            <th>Situação</th>
-            <th></th>
-        </tr>
+      <tr>
+        <th>Id</th>
+        <th>Especialidade</th>
+        <th>Data</th>
+        <th>Horário</th>
+        <th>Situação</th>
+        <th></th>
+      </tr>
     </ng-template>
     <ng-template pTemplate="body" let-consulta>
-        <tr>
-            <td>{{consulta.Id}}</td>
-            <td></td>
-            <td>{{consulta.horarioConsulta}}</td>
-            <td>{{consulta.situacao}}</td>
-            <td></td>
-        </tr>
+      <tr>
+        <td>{{consulta.id}}</td>
+        <td>{{consulta.gradeConsulta.especialidade.descricao}}</td>
+        <td>{{consulta.horarioConsulta | date: 'dd-MM-yy' }}</td>
+        <td>{{consulta.horarioConsulta | date: 'HH:mm' }}</td>
+        <td>
+          <p-badge value="{{consulta.situacao == 'L' ? 'LIVRE' : 'MARCADA'}}"
+            severity="{{consulta.situacao == 'L' ? 'success' : 'info'}}"></p-badge>
+        </td>
+        <td></td>
+      </tr>
     </ng-template>
-</p-table>
+  </p-table>
 
 </p-card>

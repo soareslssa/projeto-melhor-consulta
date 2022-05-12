@@ -20,7 +20,10 @@
           <p-badge value="{{consulta.situacao == 'L' ? 'LIVRE' : 'MARCADA'}}"
             severity="{{consulta.situacao == 'L' ? 'success' : 'info'}}"></p-badge>
         </td>
-        <td></td>
+        <td>
+          <button pButton pRipple type="button" label="Agendar Paciente" icon="pi pi-calendar-plus" class="button-acao p-button-rounded p-button-info p-button-outlined"></button>
+          <button pButton pRipple type="button" label="Excluir" icon="pi pi-trash" class="button-acao p-button-rounded p-button-danger p-button-outlined"></button>
+        </td>
       </tr>
     </ng-template>
   </p-table>

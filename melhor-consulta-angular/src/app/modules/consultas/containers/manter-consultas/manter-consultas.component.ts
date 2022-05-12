@@ -1,5 +1,5 @@
-import { ConsultasService } from './../../../services/consultas.service';
-import { Consulta } from './../../../../../models/consulta';
+import { ConsultasService } from '../../services/consultas.service';
+import { Consulta } from '../../../../models/consulta';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

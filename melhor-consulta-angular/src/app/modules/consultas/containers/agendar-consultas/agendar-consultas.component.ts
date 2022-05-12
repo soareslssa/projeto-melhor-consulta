@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Estado } from './../../../models/estado';
-import { GradeConsulta } from './../../../models/gradeConsulta';
-import { GradesService } from './../../../modules/grades/services/grades.service';
-import { UtilsService } from './../../services/utils.service';
+import { Estado } from 'src/app/models/estado';
+import { GradeConsulta } from 'src/app/models/gradeConsulta';
+import { GradesService } from 'src/app/modules/grades/services/grades.service';
+import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component({
-  selector: 'app-consultas-table',
-  templateUrl: './consultas-table.component.html',
-  styleUrls: ['./consultas-table.component.scss'],
+  selector: 'app-agendar-consultas',
+  templateUrl: './agendar-consultas.component.html',
+  styleUrls: ['./agendar-consultas.component.scss']
 })
-export class ConsultasTableComponent implements OnInit {
+export class AgendarConsultasComponent implements OnInit {
 
   grades: GradeConsulta[] = [];
   estados: Estado[] = [];

@@ -5,11 +5,11 @@ import { GradesService } from 'src/app/modules/grades/services/grades.service';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component({
-  selector: 'app-agendar-consultas',
-  templateUrl: './agendar-consultas.component.html',
-  styleUrls: ['./agendar-consultas.component.scss']
+  selector: 'app-visualizar-consultas',
+  templateUrl: './visualizar-consultas.component.html',
+  styleUrls: ['./visualizar-consultas.component.scss']
 })
-export class AgendarConsultasComponent implements OnInit {
+export class VisualizarConsultasComponent implements OnInit {
 
   grades: GradeConsulta[] = [];
   estados: Estado[] = [];

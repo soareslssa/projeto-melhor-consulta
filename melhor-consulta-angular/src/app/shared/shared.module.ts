@@ -7,8 +7,8 @@ import { AppPrimengModule } from './app-primeng/app-primeng.module';
 
 @NgModule({
 
-  imports: [CommonModule, AppPrimengModule, AppMaterialModule,FormsModule],
-  exports: [ AppMaterialModule, AppPrimengModule, ReactiveFormsModule],
+  imports: [CommonModule, AppPrimengModule, AppMaterialModule,FormsModule, ReactiveFormsModule],
+  exports: [ AppMaterialModule, AppPrimengModule, ReactiveFormsModule, FormsModule],
   providers: [
     ConfirmationService
   ]

@@ -37,7 +37,7 @@
         <td>{{consulta.medico.nomeSocial}}</td>
         <td>{{consulta.medico.estado}}</td>
         <td>
-          <p-rating [cancel]="false" [readonly]="true"></p-rating>
+          <p-rating [cancel]="false" ngModel="{{consulta.medico.notaAvaliacao}}" [readonly]="true"></p-rating>
         </td>
         <td>
           <button pButton pRipple type="button" label="Horários"  (click)="showDialog()" icon="pi pi-calendar" class="button-acao p-button-rounded p-button-info p-button-outlined"></button>
@@ -51,6 +51,5 @@
 </p-card>
 
 
-<p-dialog header="Marcar Horário" [(visible)]="display" [modal]="true" [draggable]="false" [resizable]="false">
-  Content
+<p-dialog header="Horários Disponíveis" [(visible)]="display" [modal]="true" [draggable]="false" [resizable]="false">
 </p-dialog>

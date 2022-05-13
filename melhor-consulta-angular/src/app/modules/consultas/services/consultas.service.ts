@@ -24,8 +24,8 @@ export class ConsultasService {
 
     let params = new HttpParams()
       .append('medId', mediId)
-      .append('gradeId', gradeId)
-      .append('sitCodigo', sitCodigo);
+      .append('gradeId', gradeId || null)
+      .append('sitCodigo', sitCodigo || null);
 
     return this.httpClient.get<Consulta[]>(`${this.API}/findAllByMedicoGradeSituacao`, { params: params });
   }

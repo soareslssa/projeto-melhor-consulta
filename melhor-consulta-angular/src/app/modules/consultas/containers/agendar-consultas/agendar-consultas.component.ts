@@ -1,8 +1,8 @@
-import { GradeConsulta } from './../../../../models/gradeConsulta';
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 import { Consulta } from 'src/app/models/consulta';
 import { ConsultasService } from '../../services/consultas.service';
+import { GradeConsulta } from './../../../../models/gradeConsulta';
 
 @Component({
   selector: 'app-agendar-consultas',
@@ -18,8 +18,7 @@ export class AgendarConsultasComponent implements OnInit {
   ngOnInit(): void { }
 
   listarConsultasParaAgendamento(grade: GradeConsulta) {
-    console.log(grade);
-    this.consultasService.listAllByMedicoGradeSituacao(grade.medico.id, grade.id, "L").subscribe(
+    this.consultasService.listAllByMedicoGradeSituacao(grade.medico.id, grade.id, 'L').subscribe(
       data => { this.consultas = data }
     );
   }

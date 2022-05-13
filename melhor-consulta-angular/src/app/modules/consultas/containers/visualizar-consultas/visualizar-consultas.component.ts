@@ -21,7 +21,7 @@ export class VisualizarConsultasComponent implements OnInit {
 
 
   ngOnInit() {
-      this.gradesService.list().subscribe(data => this.grades = data);
+      this.gradesService.list().subscribe(data => {this.grades = data; console.log(this.grades);} );
       this.utilsService.listarEstados().subscribe(data => this.estados = data);
   }
 

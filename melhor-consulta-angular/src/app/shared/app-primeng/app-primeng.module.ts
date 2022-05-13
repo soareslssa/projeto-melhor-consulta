@@ -1,25 +1,26 @@
 import { NgModule } from '@angular/core';
 import { AccordionModule } from 'primeng/accordion';
+import { AvatarModule } from 'primeng/avatar';
+import { BadgeModule } from 'primeng/badge';
+import { ButtonModule } from 'primeng/button';
+import { CalendarModule } from 'primeng/calendar';
+import { CardModule } from 'primeng/card';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
+import { DividerModule } from 'primeng/divider';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputMaskModule } from 'primeng/inputmask';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { InputTextModule } from 'primeng/inputtext';
+import { MenubarModule } from 'primeng/menubar';
+import { PasswordModule } from 'primeng/password';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { RatingModule } from 'primeng/rating';
+import { StepsModule } from 'primeng/steps';
 import { TableModule } from 'primeng/table';
-import {CardModule} from 'primeng/card';
-import {ButtonModule} from 'primeng/button';
-import {DropdownModule} from 'primeng/dropdown';
-import {DialogModule} from 'primeng/dialog';
-import {InputTextModule} from 'primeng/inputtext';
-import {RatingModule} from 'primeng/rating';
-import {InputMaskModule} from 'primeng/inputmask';
-import {CalendarModule} from 'primeng/calendar';
-import {StepsModule} from 'primeng/steps';
-import {AvatarModule} from 'primeng/avatar';
-import {InputNumberModule} from 'primeng/inputnumber';
-import {DividerModule} from 'primeng/divider';
-import {TabViewModule} from 'primeng/tabview';
-import {PasswordModule} from 'primeng/password';
-import {RadioButtonModule} from 'primeng/radiobutton';
-import {ToastModule} from 'primeng/toast';
-import {InputSwitchModule} from 'primeng/inputswitch';
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
-import {BadgeModule} from 'primeng/badge';
+import { TabViewModule } from 'primeng/tabview';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -44,8 +45,9 @@ import {BadgeModule} from 'primeng/badge';
     ToastModule,
     InputSwitchModule,
     ConfirmDialogModule,
-    BadgeModule
+    BadgeModule,
+    MenubarModule
 
   ],
 })
-export class AppPrimengModule {}
+export class AppPrimengModule { }

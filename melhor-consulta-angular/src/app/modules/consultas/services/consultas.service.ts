@@ -22,14 +22,10 @@ export class ConsultasService {
 
   listAllByMedicoGradeSituacao(mediId: number, gradeId: number, sitCodigo: string): Observable<Consulta[]> {
 
-    let params = new HttpParams().append('medId', mediId);
-
-
-
-    if (gradeId != null) { params.append('gradeId', gradeId); }
-    if (sitCodigo != null) {params.append('sitCodigo', sitCodigo); }
-
-    console.log(params);
+    let params = new HttpParams()
+      .append('medId', mediId)
+      .append('gradeId', gradeId)
+      .append('sitCodigo', sitCodigo);
 
     return this.httpClient.get<Consulta[]>(`${this.API}/findAllByMedicoGradeSituacao`, { params: params });
   }

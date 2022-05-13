@@ -25,33 +25,34 @@
         <th></th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-consulta let-expanded="expanded">
+    <ng-template pTemplate="body" let-grade let-expanded="expanded">
       <tr>
         <td>
-          <button type="button" pButton pRipple [pRowToggler]="consulta"
+          <button type="button" pButton pRipple [pRowToggler]="grade"
             class="p-button-text p-button-rounded p-button-plain"
             [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
         </td>
         <td>
-          {{consulta.especialidade.descricao}}</td>
-        <td>{{consulta.medico.nomeSocial}}</td>
-        <td>{{consulta.medico.estado}}</td>
+          {{grade.especialidade.descricao}}</td>
+        <td>{{grade.medico.nomeSocial}}</td>
+        <td>{{grade.medico.estado}}</td>
         <td>
-          <p-rating [cancel]="false" ngModel="{{consulta.medico.notaAvaliacao}}" [readonly]="true"></p-rating>
+          <p-rating [cancel]="false" ngModel="{{grade.medico.notaAvaliacao}}" [readonly]="true"></p-rating>
         </td>
         <td>
-          <button pButton pRipple type="button" label="Horários"  (click)="showDialog()" icon="pi pi-calendar" class="button-acao p-button-rounded p-button-info p-button-outlined"></button>
+          <button pButton pRipple type="button" label="Horários"
+            (click)="agendamento.listarConsultasParaAgendamento(grade); showDialog();"
+            icon="pi pi-calendar" class="button-acao p-button-rounded p-button-info p-button-outlined"></button>
         </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="rowexpansion" let-consulta>
-      <button pButton pRipple type="button" label="Horários"  (click)="showDialog()" icon="pi pi-calendar" class="button-acao p-button-rounded p-button-info p-button-outlined"></button>
-
+      <p>Conteudo </p>
     </ng-template>
   </p-table>
 </p-card>
 
 
 <p-dialog header="Horários Disponíveis" [(visible)]="display" [modal]="true" [draggable]="false" [resizable]="false">
-  <app-agendar-consultas></app-agendar-consultas>
+  <app-agendar-consultas #agendamento></app-agendar-consultas>
 </p-dialog>

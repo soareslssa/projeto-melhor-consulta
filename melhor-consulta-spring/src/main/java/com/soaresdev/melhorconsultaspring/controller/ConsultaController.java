@@ -2,7 +2,9 @@ package com.soaresdev.melhorconsultaspring.controller;
 
 import com.soaresdev.melhorconsultaspring.models.Consulta;
 import com.soaresdev.melhorconsultaspring.repository.ConsultaRepository;
+import com.soaresdev.melhorconsultaspring.service.ConsultaService;
 import lombok.AllArgsConstructor;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,7 @@ import java.util.List;
 public class ConsultaController {
 
     private final ConsultaRepository consultaRepository;
+    private final ConsultaService consultaService;
 
     @GetMapping
     public List<Consulta> listarTodas(){
@@ -26,5 +29,10 @@ public class ConsultaController {
     @DeleteMapping
     public void delete(@RequestParam Long id){
         consultaRepository.deleteById(id);
+    }
+
+    @GetMapping("/findAllByMedicoGradeSituacao")
+    public List<Consulta> findAllByMedicoGradeSituacao(@RequestParam("medId") Long medId, @RequestParam(value = "gradeId", required = false) Long gradeId, @RequestParam(value = "sitCodigo", required = false) String sitCodigo){
+        return consultaService.findAllByMedicoGradeSituacao(medId, gradeId, sitCodigo);
     }
 }

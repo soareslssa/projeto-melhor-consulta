@@ -48,4 +48,9 @@ public class ConsultaService {
 
         consultaRepository.saveAll(consultasPorDia);
     }
+
+
+    public List<Consulta> findAllByMedicoGradeSituacao(Long medId, Long gradeId, String sitCodigo) {
+        return consultaRepository.findAllByMedicoGradeSituacao(medId, gradeId, sitCodigo);
+    }
 }

@@ -4,12 +4,14 @@ import { SharedModule } from './../../shared/shared.module';
 import { ConsultasRoutingModule } from './consultas-routing.module';
 import { VisualizarConsultasComponent } from './containers/visualizar-consultas/visualizar-consultas.component';
 import { ManterConsultasComponent } from './containers/manter-consultas/manter-consultas.component';
+import { AgendarConsultasComponent } from './containers/agendar-consultas/agendar-consultas.component';
 
 
 @NgModule({
   declarations: [
        ManterConsultasComponent,
-       VisualizarConsultasComponent
+       VisualizarConsultasComponent,
+       AgendarConsultasComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,7 @@ import { ManterConsultasComponent } from './containers/manter-consultas/manter-c
     SharedModule,
   ],
   exports: [
-    ManterConsultasComponent
+    AgendarConsultasComponent
   ]
 })
 export class ConsultasModule { }

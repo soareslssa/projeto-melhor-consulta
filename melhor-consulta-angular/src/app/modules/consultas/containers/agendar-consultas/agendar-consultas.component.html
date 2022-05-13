@@ -1,0 +1,23 @@
+  <p-table [value]="consultas" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Especialidade</th>
+        <th>Data</th>
+        <th>Horário</th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-consulta>
+      <tr>
+        <td>{{consulta.gradeConsulta.especialidade.descricao}}</td>
+        <td>{{consulta.horarioConsulta | date: 'dd-MM-yy' }}</td>
+        <td>{{consulta.horarioConsulta | date: 'HH:mm' }}</td>
+        <td>
+          <button pButton pRipple type="button" label="Agendar" icon="pi pi-calendar-plus" class="button-acao p-button-rounded p-button-info p-button-outlined"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p-confirmDialog header="Atenção!" icon="pi pi-exclamation-triangle" acceptLabel="Sim" (closable)="true"
+  rejectLabel="Não"></p-confirmDialog>

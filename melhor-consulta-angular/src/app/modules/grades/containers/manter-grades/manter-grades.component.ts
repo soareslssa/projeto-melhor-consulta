@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EspecialidadesService } from 'src/app/modules/especialidades/services/especialidades.service';
 import { Especialidade } from './../../../../models/especialidade';
-import { GradeRequest } from './../../../../models/gradeConsulta';
+import { GradeConsulta, GradeRequest } from './../../../../models/gradeConsulta';
 import { GradesService } from './../../services/grades.service';
 
 @Component({
@@ -14,16 +14,25 @@ export class ManterGradesComponent implements OnInit {
 
 
   especialidades: Especialidade[] = [];
+  grades: GradeConsulta[];
   form: FormGroup;
+  display: boolean = false;
 
   constructor(private gradesService: GradesService, private fb: FormBuilder, private especialidadesService: EspecialidadesService) {
     this.listarEspecialidades();
+    this.listarGrades();
     this.initForm();
   }
 
   listarEspecialidades() {
     this.especialidadesService.list().subscribe(
       data => { this.especialidades = data; }
+    );
+  }
+
+  listarGrades() {
+    this.gradesService.listAllByMedico(4).subscribe(
+      data => this.grades = data
     );
   }
 
@@ -40,8 +49,14 @@ export class ManterGradesComponent implements OnInit {
 
   onAdd() {
     let grade: GradeRequest = { ... this.form.value };
-    this.gradesService.add(grade).subscribe();
+    this.gradesService.add(grade).subscribe(
+      () => { this.listarGrades(); }
+    );
   }
+
+  showDialog() {
+    this.display = true;
+}
 
   ngOnInit(): void {
   }

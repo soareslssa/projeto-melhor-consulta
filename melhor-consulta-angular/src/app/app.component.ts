@@ -15,17 +15,17 @@ export class AppComponent {
 
     this.menuItens = [
       {
-        label: 'Consultas', items: [
+        label: 'Consultas', icon: 'pi pi-fw pi-calendar', items: [
           { label: 'Agendamento', routerLink: '/consultas' }
         ]
       },
       {
-        label: 'Grades', items: [
+        label: 'Grades', icon: 'pi pi-fw pi-table', items: [
           { label: 'Manter Grades', routerLink: '/grades' }
         ]
       },
       {
-        label: 'Especialidades', items: [
+        label: 'Especialidades', icon: 'pi pi-fw pi-star', items: [
           { label: 'Manter Especialidades', routerLink: '/especialidades' }
         ]
       },

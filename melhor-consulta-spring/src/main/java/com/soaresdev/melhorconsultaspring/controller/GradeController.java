@@ -28,6 +28,11 @@ public class GradeController {
         return gradeRepository.findAll();
     }
 
+    @GetMapping("/medico")
+    public List<GradeConsulta> listarPorMedico(@RequestParam("medId") Long medId){
+        return gradeRepository.findAllByMedico(medId);
+    }
+
 
     @PostMapping
     public void inserirGrade(@RequestBody GradeDTO gradeDTO) throws ParseException {

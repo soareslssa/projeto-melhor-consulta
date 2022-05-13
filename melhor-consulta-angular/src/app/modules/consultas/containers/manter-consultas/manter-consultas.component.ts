@@ -1,7 +1,7 @@
-import { ConsultasService } from '../../services/consultas.service';
-import { Consulta } from '../../../../models/consulta';
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
+import { Consulta } from '../../../../models/consulta';
+import { ConsultasService } from '../../services/consultas.service';
 
 @Component({
   selector: 'app-manter-consultas',
@@ -18,13 +18,18 @@ export class ManterConsultasComponent implements OnInit {
     this.obterConsultas();
   }
 
-  obterConsultas(){
+  obterConsultas() {
     this.consultasService.list().subscribe(
-      data =>{ this.consultas = data; console.log(data)}
+      data => { this.consultas = data; }
     );
   }
 
-  onDelete(id: number){
+  pesquisarConsultasPorGrade(gradeId: number) {
+    this.consultasService.listAllByMedicoGradeSituacao(4, gradeId, 'L')
+      .subscribe(data => this.consultas = data);
+  }
+
+  onDelete(id: number) {
     this.confirmationService.confirm({
       message: "Tem certeza que deseja excluir este Horário?",
       accept: () => {

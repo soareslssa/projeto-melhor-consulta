@@ -11,4 +11,7 @@ public interface GradeRepository extends JpaRepository<GradeConsulta, Long> {
 
     @Query("SELECT c from GradeConsulta c where c.especialidade.id = :espId")
     List<GradeConsulta> findAllByEspecialidadeId(@Param("espId") Long espId);
+
+    @Query("SELECT g FROM GradeConsulta g JOIN g.medico m where m.id = :medId")
+    List<GradeConsulta> findAllByMedico(@Param("medId") Long medId);
 }

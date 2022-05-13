@@ -19,7 +19,8 @@ import { AgendarConsultasComponent } from './containers/agendar-consultas/agenda
     SharedModule,
   ],
   exports: [
-    AgendarConsultasComponent
+    AgendarConsultasComponent,
+    ManterConsultasComponent
   ]
 })
 export class ConsultasModule { }

@@ -1,19 +1,21 @@
-import { SharedModule } from './../../shared/shared.module';
-import { GradesRoutingModule } from './grades-routing.module';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { SharedModule } from './../../shared/shared.module';
+import { ConsultasModule } from './../consultas/consultas.module';
 import { ManterGradesComponent } from './containers/manter-grades/manter-grades.component';
+import { GradesRoutingModule } from './grades-routing.module';
 
 
 
 @NgModule({
   declarations: [
-    ManterGradesComponent
+    ManterGradesComponent,
   ],
   imports: [
     CommonModule,
     GradesRoutingModule,
-    SharedModule
+    SharedModule,
+    ConsultasModule
   ]
 })
 export class GradesModule { }

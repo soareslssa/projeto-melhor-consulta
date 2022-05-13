@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -24,23 +23,23 @@ public class GradeController {
     private final GradeRepository gradeRepository;
 
     @GetMapping
-    public List<GradeConsulta> listar(){
+    public List<GradeConsulta> listar() {
         return gradeRepository.findAll();
     }
 
     @GetMapping("/medico")
-    public List<GradeConsulta> listarPorMedico(@RequestParam("medId") Long medId){
+    public List<GradeConsulta> listarPorMedico(@RequestParam("medId") Long medId) {
         return gradeRepository.findAllByMedico(medId);
     }
 
 
     @PostMapping
-    public void inserirGrade(@RequestBody GradeDTO gradeDTO) throws ParseException {
+    public void inserirGrade(@RequestBody GradeDTO gradeDTO) {
         gradeConsultaService.save(gradeDTO);
     }
 
     @GetMapping("/listarPorEspecialidade")
-    public List<GradeConsulta> listarPorEspecialidade(@RequestParam() Long espId){
+    public List<GradeConsulta> listarPorEspecialidade(@RequestParam() Long espId) {
         return gradeRepository.findAllByEspecialidadeId(espId);
     }
 }

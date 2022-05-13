@@ -24,7 +24,7 @@ public class ConsultaService {
     private final ConsultaRepository consultaRepository;
 
     public void gerarConsultasPorDia(GradeDTO gradeDTO, GradeConsulta gradeConsulta) throws ParseException {
-        LocalDateTime hrInicial = LocalDateTime.now().with(LocalTime.of(Integer.parseInt(gradeDTO.getHrInicio().substring(0,2)),0));
+   /*     LocalDateTime hrInicial = LocalDateTime.now().with(LocalTime.of(Integer.parseInt(gradeDTO.getHrInicio().substring(0,2)),0));
         LocalDateTime hrFinal =LocalDateTime.now().with(LocalTime.of(Integer.parseInt(gradeDTO.getHrFim().substring(0,2)),0));
         long qtHorarios = Duration.between(hrInicial,hrFinal).toHours();
 
@@ -46,7 +46,7 @@ public class ConsultaService {
             }
         }
 
-        consultaRepository.saveAll(consultasPorDia);
+        consultaRepository.saveAll(consultasPorDia);*/
     }
 
 

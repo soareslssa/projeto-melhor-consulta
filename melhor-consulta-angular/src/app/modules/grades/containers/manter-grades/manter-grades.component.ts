@@ -39,24 +39,25 @@ export class ManterGradesComponent implements OnInit {
   initForm() {
     this.form = this.fb.group({
       id: this.fb.control(null),
+      medicoId: this.fb.control(4),
       espId: this.fb.control(''),
-      dtConsulta: this.fb.control([]),
-      hrInicio: this.fb.control(''),
-      hrFim: this.fb.control(''),
-      medicoId: this.fb.control(4)
+      valor: this.fb.control(0.00)
     });
   }
 
   onAdd() {
     let grade: GradeRequest = { ... this.form.value };
     this.gradesService.add(grade).subscribe(
-      () => { this.listarGrades(); }
+      () => {
+        this.listarGrades();
+        this.initForm();
+      }
     );
   }
 
   showDialog() {
     this.display = true;
-}
+  }
 
   ngOnInit(): void {
   }

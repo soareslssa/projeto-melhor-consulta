@@ -18,3 +18,9 @@ export interface GradeRequest {
   medicoId: number,
   valor: number
 }
+
+export interface GradeHorarioRequest {
+  gradeId: number,
+  espId: number,
+  datasDisponiveis: String[]
+}

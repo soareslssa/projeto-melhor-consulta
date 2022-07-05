@@ -26,5 +26,9 @@ public class GradeConsultaService {
         gradeRepository.save(grade);
     }
 
+    public GradeConsulta obterGradePorId(Long id){
+        return gradeRepository.findById(id).get();
+    }
+
 
 }

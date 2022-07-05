@@ -23,6 +23,7 @@ export class AcessoUsuarioComponent implements OnInit {
       this.formCadastro = fb.group({
         nome: fb.control(''),
         sobrenome: fb.control(''),
+        cpf: fb.control(''),
         email: fb.control(''),
         senha: fb.control(''),
         sexo: fb.control(''),

@@ -21,6 +21,7 @@ import { StepsModule } from 'primeng/steps';
 import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
 import { ToastModule } from 'primeng/toast';
+import { TagModule } from 'primeng/tag';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { ToastModule } from 'primeng/toast';
     InputSwitchModule,
     ConfirmDialogModule,
     BadgeModule,
-    MenubarModule
+    MenubarModule,
+    TagModule
 
   ],
 })

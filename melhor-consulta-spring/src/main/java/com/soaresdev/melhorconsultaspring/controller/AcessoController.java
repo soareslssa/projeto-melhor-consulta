@@ -2,7 +2,6 @@ package com.soaresdev.melhorconsultaspring.controller;
 
 import com.soaresdev.melhorconsultaspring.dto.AcessoUsuarioDTO;
 import com.soaresdev.melhorconsultaspring.dto.UsuarioDTO;
-import com.soaresdev.melhorconsultaspring.models.Usuario;
 import com.soaresdev.melhorconsultaspring.service.AcessoService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

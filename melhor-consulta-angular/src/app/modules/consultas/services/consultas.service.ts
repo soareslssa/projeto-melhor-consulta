@@ -1,3 +1,4 @@
+import { GradeHorarioRequest } from './../../../models/gradeConsulta';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -28,5 +29,9 @@ export class ConsultasService {
       .append('sitCodigo', sitCodigo || null);
 
     return this.httpClient.get<Consulta[]>(`${this.API}/findAllByMedicoGradeSituacao`, { params: params });
+  }
+
+  gerarHorarios(gradeHorario: GradeHorarioRequest): Observable<void>{
+    return this.httpClient.post<void>(`${this.API}/horarios/gerar`, gradeHorario);
   }
 }

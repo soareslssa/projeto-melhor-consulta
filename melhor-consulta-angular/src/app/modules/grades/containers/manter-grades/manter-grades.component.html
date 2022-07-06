@@ -60,7 +60,7 @@
     </p-dialog>
 
     <p-dialog header="Gerar Horários" [(visible)]="gerarHorariosDisplay"   [modal]="true" [draggable]="false"
-      [resizable]="false">
+      [resizable]="false" >
       <div class="grid p-fluid">
         <div class="col-12 md:col-12 lg:col-12">
           <p-calendar placeholder="Selecione os dias" (ngModel)="datasDisponiveis" [disabledDates]="datasInvalidas" selectionMode="multiple" [inline]="true" [showButtonBar]="true" cle

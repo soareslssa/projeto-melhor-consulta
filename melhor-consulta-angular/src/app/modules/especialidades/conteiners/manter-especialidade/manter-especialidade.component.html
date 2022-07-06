@@ -18,7 +18,11 @@
         <p-inputSwitch formControlName="situacao"></p-inputSwitch>
       </div>
       <div class="col-12 md:col-6 lg:col-1">
-        <p-button label="Gravar" icon="pi pi-save" (click)="onAdd()"></p-button>
+        <button pButton  type="button" label="{{edicao ? 'Alterar' : 'Gravar'}}"  icon="{{edicao ? 'pi pi-check' : 'pi pi-save'}}" (click)="onSave()"></button>
+      </div>
+      <div class="col-12 md:col-6 lg:col-1">
+        <button pButton  type="button" label="Cancelar" [disabled]="!edicao"  icon="pi pi-times" (click)="reiniciar()"
+        class="p-button-danger" ></button>
       </div>
     </div>
 
@@ -42,11 +46,11 @@
           <td>{{item.sigla}}</td>
           <td>{{item.descricao}}</td>
           <td>
-            <p-inputSwitch formControlName="situacao" [readonly]="true"></p-inputSwitch>
+            <p-inputSwitch formControlName="situacao"  [readonly]="true"></p-inputSwitch>
           </td>
           <td>
-            <button pButton pRipple type="button" label="Excluir" icon="pi pi-trash" (click)="onDelete(item.id)"
-              class="button-acao p-button-rounded p-button-danger p-button-outlined"></button>
+            <button pButton pRipple type="button" label="Editar" [disabled]="edicao"  icon="pi pi-pencil" (click)="onEdit(item)"
+              class="button-acao p-button-rounded p-button-warning p-button-outlined"></button>
           </td>
         </tr>
       </ng-template>

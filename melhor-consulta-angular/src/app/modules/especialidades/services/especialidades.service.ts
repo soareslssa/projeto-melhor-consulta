@@ -24,6 +24,10 @@ export class EspecialidadesService {
   delete(id: number): Observable<any> {
     return this.httpClient.delete<any>(`${this.API}?id=${id}`);
   }
+
+  update(especialidade: EspecialidadeRequest): Observable<any> {
+    return this.httpClient.put<any>(this.API, especialidade);
+  }
 }
 
 

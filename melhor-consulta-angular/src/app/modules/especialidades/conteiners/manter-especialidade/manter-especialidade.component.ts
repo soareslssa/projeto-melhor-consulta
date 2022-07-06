@@ -15,6 +15,7 @@ export class ManterEspecialidadeComponent implements OnInit {
 
   _form: FormGroup;
   especialidades: Especialidade[];
+  edicao: boolean = false;
 
   constructor(private fb: FormBuilder, private especialidadeService: EspecialidadesService,
     private router: Router, private confirmationService: ConfirmationService) {
@@ -24,6 +25,7 @@ export class ManterEspecialidadeComponent implements OnInit {
 
   private limparCampos(fb: FormBuilder) {
     this._form = fb.group({
+      id: fb.control(null),
       sigla: fb.control(''),
       descricao: fb.control(''),
       situacao: fb.control(true),
@@ -31,13 +33,19 @@ export class ManterEspecialidadeComponent implements OnInit {
     });
   }
 
-  onAdd() {
+  onSave() {
     let especialidade: EspecialidadeRequest = { ... this._form.value };
+    if(this.edicao){
+      this.especialidadeService.update(especialidade)
+      .subscribe(data => {
+        this.reiniciar();
+      })
+    } else {
     this.especialidadeService.add(especialidade)
       .subscribe(data => {
-        this.listarEspecialidades();
-        this.limparCampos(this.fb)
+        this.reiniciar();
       });
+    }
   }
 
   onDelete(id: number) {
@@ -50,6 +58,22 @@ export class ManterEspecialidadeComponent implements OnInit {
         );
       }
     });
+  }
+
+  onEdit(selected: Especialidade){
+    this.edicao = true;
+
+    this._form.controls['id'].setValue(selected.id);
+    this._form.controls['sigla'].setValue(selected.sigla);
+    this._form.controls['descricao'].setValue(selected.descricao);
+    this._form.controls['situacao'].setValue(selected.situacao);
+    this._form.controls['medico'].setValue(selected.medico);
+  }
+
+  reiniciar(){
+    this.edicao = false;
+    this.limparCampos(this.fb);
+    this.listarEspecialidades();
   }
 
 

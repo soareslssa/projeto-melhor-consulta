@@ -9,6 +9,7 @@ export interface Especialidade {
 }
 
 export interface EspecialidadeRequest{
+  id: number,
   sigla: string,
   descricao: string,
   situacao: boolean,

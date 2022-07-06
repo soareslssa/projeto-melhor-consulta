@@ -1,11 +1,12 @@
-import { ConsultasService } from './../../../consultas/services/consultas.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { EspecialidadesService } from 'src/app/modules/especialidades/services/especialidades.service';
 import { Especialidade } from './../../../../models/especialidade';
 import { GradeConsulta, GradeHorarioRequest, GradeRequest } from './../../../../models/gradeConsulta';
+import { ConsultasService } from './../../../consultas/services/consultas.service';
 import { GradesService } from './../../services/grades.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manter-grades',
@@ -27,7 +28,7 @@ export class ManterGradesComponent implements OnInit {
 
 
   constructor(private gradesService: GradesService, private fb: FormBuilder, private especialidadesService: EspecialidadesService,
-    private consultasService: ConsultasService,  private router: Router) {
+    private consultasService: ConsultasService, private router: Router, private messageService: MessageService) {
     this.listarEspecialidades();
     this.listarGrades();
     this.initForm();
@@ -35,7 +36,7 @@ export class ManterGradesComponent implements OnInit {
     let today = new Date();
     let invalidDate = new Date();
     invalidDate.setDate(today.getDate() - 1);
-    this.datasInvalidas = [today,invalidDate];
+    this.datasInvalidas = [today, invalidDate];
   }
 
   listarEspecialidades() {
@@ -46,7 +47,7 @@ export class ManterGradesComponent implements OnInit {
 
   listarGrades() {
     this.gradesService.listAllByMedico(4).subscribe(
-      data => { this.grades = data;}
+      data => { this.grades = data; }
     );
   }
 
@@ -82,15 +83,27 @@ export class ManterGradesComponent implements OnInit {
   gerarHorariosDeAgendamento() {
 
     let horarios = {} as GradeHorarioRequest;
-    horarios.datasDisponiveis = ['11-07-22','12-07-22','13-07-22','14-07-22'];
+    horarios.datasDisponiveis = ['11-07-22', '12-07-22', '13-07-22', '14-07-22'];
     horarios.gradeId = this.gradeSelecionada.id;
     horarios.espId = this.gradeSelecionada.especialidade.id;
 
-    this.consultasService.gerarHorarios(horarios).subscribe(_result =>{
-      this.router.navigate(['/grades']);
-    }
+    this.consultasService.gerarHorarios(horarios).subscribe(_result => {
+      this.gerarHorariosDisplay = false;
+      this.router.navigate([this.router.url]);
+
+      this.showMessage("Horários gerados com sucesso!");
+    },
+      error => (this.showError("Erro ao gerar horários"))
     );
 
+  }
+
+  showMessage(msg: string) {
+    this.messageService.add({ severity: 'success', summary: msg });
+  }
+
+  showError(msg: string) {
+    this.messageService.add({ severity: 'error', summary: msg, detail: 'Entre em contato com a administração!' });
   }
 
   ngOnInit(): void {

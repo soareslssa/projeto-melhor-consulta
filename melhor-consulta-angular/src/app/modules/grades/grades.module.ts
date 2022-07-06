@@ -1,3 +1,4 @@
+import { MessageService } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './../../shared/shared.module';
@@ -16,6 +17,7 @@ import { GradesRoutingModule } from './grades-routing.module';
     GradesRoutingModule,
     SharedModule,
     ConsultasModule
-  ]
+  ],
+  providers: [MessageService]
 })
 export class GradesModule { }

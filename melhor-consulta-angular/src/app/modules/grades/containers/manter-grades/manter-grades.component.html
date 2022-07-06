@@ -56,23 +56,25 @@
 
     <p-dialog header="Horários Disponíveis" [(visible)]="display" [modal]="true" [draggable]="false"
       [resizable]="false">
-      <app-manter-consultas #manterConsultas></app-manter-consultas>
+      <app-manter-consultas #manterConsultas ></app-manter-consultas>
     </p-dialog>
 
-    <p-dialog header="Gerar Horários" [(visible)]="gerarHorariosDisplay"   [modal]="true" [draggable]="false"
+    <p-dialog header="Gerar Horários"  [(visible)]="gerarHorariosDisplay" [modal]="true" [draggable]="false"
       [resizable]="false" >
-      <div class="grid p-fluid">
+      <div class="grid p-fluid" style="width: 900px !important;">
         <div class="col-12 md:col-12 lg:col-12">
           <p-calendar placeholder="Selecione os dias" (ngModel)="datasDisponiveis" [disabledDates]="datasInvalidas" selectionMode="multiple" [inline]="true" [showButtonBar]="true" cle
           [disabledDays]="[0,6]" dateFormat="dd-mm-yy" dataType="string" [readonlyInput]="true"  inputId="multiple"></p-calendar>
         </div>
       </div>
       <div class="grid p-fluid">
-        <div class="col-12 md:col-6 lg:col-6">
+        <div class="col-12 md:col-6 lg:col-4">
           <p-button label="Gerar Horários" icon="pi pi-check" (click)="gerarHorariosDeAgendamento()"></p-button>
         </div>
       </div>
     </p-dialog>
 
   </p-card>
+
+  <p-toast></p-toast>
 </form>

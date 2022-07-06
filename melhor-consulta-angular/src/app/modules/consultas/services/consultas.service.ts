@@ -30,6 +30,14 @@ export class ConsultasService {
     return this.httpClient.get<Consulta[]>(`${this.API}/findAllByMedicoGrade`, { params: params });
   }
 
+  listarConsultasPorPaciente(pacienteId: number): Observable<Consulta[]> {
+
+    let params = new HttpParams()
+      .append('pacienteId', pacienteId);
+
+    return this.httpClient.get<Consulta[]>(`${this.API}/findByPaciente`, { params: params });
+  }
+
   listarConsultasLivresPorMedicoGrade(medId: number, gradeId: number): Observable<Consulta[]> {
     let params = new HttpParams()
     .append('medId', medId)

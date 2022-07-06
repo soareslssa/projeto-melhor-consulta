@@ -44,6 +44,11 @@ public class ConsultaController {
         return consultaService.listarConsultasLivresPorMedicoGrade(medId, gradeId);
     }
 
+    @GetMapping("/findByPaciente")
+    public List<Consulta> listarConsultasPorPaciente(@RequestParam("pacienteId") Long pacienteId){
+        return consultaService.listarConsultasPorPaciente(pacienteId);
+    }
+
     @PostMapping("/horarios/gerar")
     public void gerarHorariosPorEspecialidade(@RequestBody GradeHorarioDTO dto) {
         consultaService.gerarConsultasPorDia(dto);

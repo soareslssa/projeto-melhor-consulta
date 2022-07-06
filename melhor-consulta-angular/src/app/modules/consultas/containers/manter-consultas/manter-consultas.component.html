@@ -17,7 +17,7 @@
       <td>{{consulta.horarioConsulta | date: 'HH:mm' }}</td>
       <td>
         <p-badge value="{{consulta.situacao == 'L' ? 'LIVRE' : 'MARCADA'}}"
-          severity="{{consulta.situacao == 'L' ? 'success' : 'info'}}"></p-badge>
+          severity="{{consulta.situacao == 'L' ? 'success' : 'danger'}}"></p-badge>
       </td>
       <td>
         <button pButton pRipple type="button" label="Agendar Paciente" icon="pi pi-calendar-plus"

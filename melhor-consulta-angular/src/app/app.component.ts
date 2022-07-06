@@ -16,7 +16,8 @@ export class AppComponent {
     this.menuItens = [
       {
         label: 'Consultas', icon: 'pi pi-fw pi-calendar', items: [
-          { label: 'Agendamento', routerLink: '/consultas' }
+          { label: 'Agendamento', routerLink: '/consultas' },
+          { label: 'Minhas Consultas', routerLink: '/consultas/consultas-paciente' }
         ]
       },
       {

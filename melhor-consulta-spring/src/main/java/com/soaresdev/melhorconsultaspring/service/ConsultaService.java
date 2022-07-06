@@ -78,4 +78,8 @@ public class ConsultaService {
     public List<Consulta> listarConsultasLivresPorMedicoGrade(Long medId, Long gradeId) {
         return consultaRepository.listarConsultasLivresPorMedicoGrade(medId, gradeId);
     }
+
+    public List<Consulta> listarConsultasPorPaciente(Long pacienteId) {
+        return consultaRepository.listarConsultasPorPaciente(pacienteId);
+    }
 }

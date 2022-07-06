@@ -58,4 +58,9 @@ public class ConsultaController {
     public void agendarConsulta(@RequestBody ConsultaDTO dto){
         consultaService.agendarConsulta(dto);
     }
+
+    @GetMapping("/desmarcar")
+    public void desmarcarConsulta(@RequestParam("consultaId") Long consultaId){
+        consultaService.desmarcarConsulta(consultaId);
+    }
 }

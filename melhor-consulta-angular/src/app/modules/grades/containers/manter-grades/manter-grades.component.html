@@ -36,7 +36,8 @@
           <td>{{grade.especialidade.descricao}}</td>
           <td>{{grade.criadoEm | date: 'dd-MM-yy'}}</td>
           <td>
-            <p-inputSwitch [readonly]="true"></p-inputSwitch>
+            <p-badge value="{{grade.situacao == true ? 'Ativo' : 'Inativo'}}"
+            severity="{{grade.situacao == true ? 'success' : 'danger'}}"></p-badge>
           </td>
           <td>
             <button pButton pRipple type="button" label="Gerar Horários" icon="pi pi-calendar-plus"
@@ -45,8 +46,8 @@
             <button pButton pRipple type="button" label="Manter Horários"
               (click)="manterConsultas.pesquisarConsultasPorGrade(grade.id); showDialog()" icon="pi pi-calendar"
               class="button-acao p-button-sm p-button-rounded p-button-info p-button-outlined"></button>
-            <button pButton pRipple type="button" label="Desativar" icon="pi pi-power-off"
-              class="button-acao p-button-sm p-button-rounded p-button-danger p-button-outlined"></button>
+            <button pButton pRipple type="button" label="{{grade.situacao == true ? 'Inativar' : 'Ativar'}}" icon="pi pi-power-off" (click)="ativarInativarGrade(grade)"
+              class="button-acao p-button-sm p-button-rounded {{grade.situacao == true ? 'p-button-danger' : 'p-button-success'}} p-button-outlined"></button>
 
           </td>
         </tr>

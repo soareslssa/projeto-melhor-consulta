@@ -9,6 +9,7 @@ import { Consulta, ConsultaRequest } from './../../../models/consulta';
 })
 export class ConsultasService {
 
+
   private readonly API = 'api/consultas';
 
   constructor(private httpClient: HttpClient) { }
@@ -28,6 +29,12 @@ export class ConsultasService {
       .append('gradeId', gradeId || null);
 
     return this.httpClient.get<Consulta[]>(`${this.API}/findAllByMedicoGrade`, { params: params });
+  }
+
+  desmarcar(id: number):Observable<any> {
+    let params = new HttpParams()
+    .append('consultaId', id);
+    return this.httpClient.get<any>(`${this.API}/desmarcar`, { params: params });
   }
 
   listarConsultasPorPaciente(pacienteId: number): Observable<Consulta[]> {

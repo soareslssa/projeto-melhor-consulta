@@ -7,6 +7,7 @@ import { GradeConsulta, GradeRequest } from './../../../models/gradeConsulta';
   providedIn: 'root'
 })
 export class GradesService {
+
   private readonly API = 'api/grades';
 
   constructor(private httpClient: HttpClient) { }
@@ -16,8 +17,11 @@ export class GradesService {
   }
 
   add(grade: GradeRequest): Observable<any> {
-    console.log(grade);
     return this.httpClient.post<void>(this.API, grade);
+  }
+
+  atualizarGrade(grade: GradeConsulta) {
+    return this.httpClient.put<void>(this.API, grade);
   }
 
   listAllByMedico(medId: number) {

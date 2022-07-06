@@ -5,12 +5,7 @@ import com.soaresdev.melhorconsultaspring.models.GradeConsulta;
 import com.soaresdev.melhorconsultaspring.repository.GradeRepository;
 import com.soaresdev.melhorconsultaspring.service.GradeConsultaService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,5 +36,10 @@ public class GradeController {
     @GetMapping("/listarPorEspecialidade")
     public List<GradeConsulta> listarPorEspecialidade(@RequestParam() Long espId) {
         return gradeRepository.findAllByEspecialidadeId(espId);
+    }
+
+    @PutMapping
+    public void atualizarGrade(@RequestBody GradeConsulta grade){
+        gradeRepository.save(grade);
     }
 }

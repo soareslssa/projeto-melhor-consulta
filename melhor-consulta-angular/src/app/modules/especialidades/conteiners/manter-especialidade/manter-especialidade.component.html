@@ -46,8 +46,8 @@
           <td>{{item.sigla}}</td>
           <td>{{item.descricao}}</td>
           <td>
-            <p-inputSwitch formControlName="situacao"  [readonly]="true"></p-inputSwitch>
-          </td>
+            <p-badge value="{{item.situacao == true ? 'Ativo' : 'Inativo'}}"
+            severity="{{item.situacao == true ? 'success' : 'danger'}}"></p-badge>          </td>
           <td>
             <button pButton pRipple type="button" label="Editar" [disabled]="edicao"  icon="pi pi-pencil" (click)="onEdit(item)"
               class="button-acao p-button-rounded p-button-warning p-button-outlined"></button>

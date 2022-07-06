@@ -43,6 +43,17 @@ export class ConsultasPacienteComponent implements OnInit {
     });
   }
 
+  desmarcarConsulta(consulta: Consulta){
+    this.confirmationService.confirm({
+      message: 'Tem certeza que deseja desmarcar esta consulta?',
+      accept: () => {
+        this.consultasService
+          .desmarcar(consulta.id)
+          .subscribe(data =>{ this.listarConsultasDoPaciente()});
+      },
+    });
+  }
+
   showMessage(msg: string) {
     this.toast.add({ severity: 'success', summary: msg })
   }

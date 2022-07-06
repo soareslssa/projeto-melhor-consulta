@@ -20,10 +20,10 @@
           severity="{{consulta.situacao == 'L' ? 'success' : 'danger'}}"></p-badge>
       </td>
       <td>
-        <button pButton pRipple type="button" label="Agendar Paciente" icon="pi pi-calendar-plus"
+        <button pButton pRipple type="button" label="{{consulta.situacao == 'L' ? 'Agendar Paciente' : 'Detalhes Consulta'}}" icon="{{consulta.situacao == 'L' ? 'pi pi-calendar-plus' : 'pi pi-eye'}}"
           class="button-acao p-button-sm p-button-rounded p-button-info p-button-outlined"></button>
       </td>
-      <td><button pButton pRipple type="button" (click)="onDelete(consulta.id)" label="Excluir" icon="pi pi-trash"
+      <td><button pButton pRipple type="button" (click)="onDelete(consulta)" label="{{consulta.situacao == 'L' ? 'Excluir' : 'Desmarcar'}}" icon="pi pi-trash"
           class="button-acao p-button-sm p-button-rounded p-button-danger p-button-outlined"></button>
       </td>
     </tr>

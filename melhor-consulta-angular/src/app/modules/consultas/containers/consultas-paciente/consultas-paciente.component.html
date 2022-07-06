@@ -20,11 +20,15 @@
           <button pButton pRipple type="button" label="Remarcar"
           icon="pi pi-clock" class="button-acao p-button-rounded p-button-warning "></button>
 
-          <button pButton pRipple type="button" label="Desmarcar"
+          <button pButton pRipple type="button" label="Desmarcar" (click)="desmarcarConsulta(consulta)"
           icon="pi pi-trash" class="button-acao p-button-rounded p-button-danger "></button>
         </td>
       </tr>
     </ng-template>
   </p-table>
 </p-card>
+
+
+<p-confirmDialog header="Atenção!" icon="pi pi-exclamation-triangle" acceptLabel="Sim" (closable)="true"
+  rejectLabel="Não"></p-confirmDialog>
 

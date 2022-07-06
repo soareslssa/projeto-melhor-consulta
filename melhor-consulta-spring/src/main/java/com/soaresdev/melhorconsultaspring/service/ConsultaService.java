@@ -82,4 +82,11 @@ public class ConsultaService {
     public List<Consulta> listarConsultasPorPaciente(Long pacienteId) {
         return consultaRepository.listarConsultasPorPaciente(pacienteId);
     }
+
+    public void desmarcarConsulta(Long consultaId) {
+        Consulta consulta = consultaRepository.getById(consultaId);
+        consulta.setSituacao("L");
+        consulta.setPaciente(null);
+        consultaRepository.save(consulta);
+    }
 }

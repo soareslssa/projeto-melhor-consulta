@@ -13,7 +13,8 @@
         <td>{{consulta.horarioConsulta | date: 'dd-MM-yy' }}</td>
         <td>{{consulta.horarioConsulta | date: 'HH:mm' }}</td>
         <td>
-          <button pButton pRipple type="button" label="Agendar" icon="pi pi-calendar-plus" class="button-acao p-button-rounded p-button-info p-button-outlined"></button>
+          <button pButton pRipple type="button" label="Agendar" (click)="agendarConsulta(consulta)"
+          icon="pi pi-calendar-plus" class="button-acao p-button-rounded p-button-info p-button-outlined"></button>
         </td>
       </tr>
     </ng-template>
@@ -21,3 +22,4 @@
 
   <p-confirmDialog header="Atenção!" icon="pi pi-exclamation-triangle" acceptLabel="Sim" (closable)="true"
   rejectLabel="Não"></p-confirmDialog>
+  <p-toast></p-toast>

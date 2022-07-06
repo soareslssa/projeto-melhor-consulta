@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Consulta } from 'src/app/models/consulta';
 import { ConsultasService } from '../../services/consultas.service';
+import { ConsultaRequest } from './../../../../models/consulta';
 import { GradeConsulta } from './../../../../models/gradeConsulta';
 
 @Component({
@@ -13,7 +14,8 @@ export class AgendarConsultasComponent implements OnInit {
 
   consultas: Consulta[];
 
-  constructor(private consultasService: ConsultasService, private confirmationService: ConfirmationService) { }
+  constructor(private consultasService: ConsultasService, private confirmationService: ConfirmationService
+    , private toast: MessageService) { }
 
   ngOnInit(): void { }
 
@@ -22,5 +24,29 @@ export class AgendarConsultasComponent implements OnInit {
       data => { this.consultas = data }
     );
   }
+
+  agendarConsulta(consulta: Consulta) {
+    this.confirmationService.confirm({
+      message: "Tem certeza que deseja agendar este Horário?",
+      accept: () => {
+        let request: ConsultaRequest = { id: consulta.id, gradeId: consulta.gradeConsulta.id, pacienteId: 10 , situacao: 'M'};
+        this.consultasService.agendarConsulta(request)
+          .subscribe(data =>
+            this.showMessage("Consulta agendada com sucesso!")
+            ,
+            error => (this.showError("Erro ao agendar consulta!", "Entre em contato com o consultório!"))
+          )
+      }
+    });
+  }
+
+  showMessage(msg: string) {
+    this.toast.add({ severity: 'success', summary: msg })
+  }
+
+  showError(msg: string, detail: string) {
+    this.toast.add({ severity: 'error', summary: msg, detail: detail })
+  }
+
 
 }

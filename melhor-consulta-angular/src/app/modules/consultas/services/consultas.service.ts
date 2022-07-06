@@ -2,7 +2,7 @@ import { GradeHorarioRequest } from './../../../models/gradeConsulta';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Consulta } from './../../../models/consulta';
+import { Consulta, ConsultaRequest } from './../../../models/consulta';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +33,9 @@ export class ConsultasService {
 
   gerarHorarios(gradeHorario: GradeHorarioRequest): Observable<void>{
     return this.httpClient.post<void>(`${this.API}/horarios/gerar`, gradeHorario);
+  }
+
+  agendarConsulta(request: ConsultaRequest): Observable<void> {
+    return this.httpClient.post<void>(this.API, request);
   }
 }

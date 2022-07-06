@@ -3,10 +3,12 @@ package com.soaresdev.melhorconsultaspring;
 import com.soaresdev.melhorconsultaspring.models.GradeConsulta;
 import com.soaresdev.melhorconsultaspring.models.Especialidade;
 import com.soaresdev.melhorconsultaspring.models.Medico;
+import com.soaresdev.melhorconsultaspring.models.Paciente;
 import com.soaresdev.melhorconsultaspring.repository.ConsultaRepository;
 import com.soaresdev.melhorconsultaspring.repository.EspecialidadeRepository;
 import com.soaresdev.melhorconsultaspring.repository.GradeRepository;
 import com.soaresdev.melhorconsultaspring.repository.MedicoRepository;
+import com.soaresdev.melhorconsultaspring.repository.PacienteRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,11 +26,15 @@ public class MelhorConsultaSpringApplication {
 	}
 
 	@Bean
-	CommandLineRunner initDatabase(EspecialidadeRepository especialidadeRepository, GradeRepository gradeRepository, MedicoRepository medicoRepository){
+	CommandLineRunner initDatabase(EspecialidadeRepository especialidadeRepository,
+								   GradeRepository gradeRepository, MedicoRepository medicoRepository,
+								   PacienteRepository pacienteRepository){
 		return args -> {
 			especialidadeRepository.deleteAll();
 			gradeRepository.deleteAll();
 			medicoRepository.deleteAll();
+			pacienteRepository.deleteAll();
+
 
 			Especialidade e = new Especialidade("CAR","Cardiologia",true);
 			Especialidade e2 = new Especialidade("PSI","Psiquiatria",true);
@@ -118,6 +124,19 @@ public class MelhorConsultaSpringApplication {
 			g2.setCriadoEm(new Date());
 			g2.setValor(300.0);
 
+			Paciente p = new Paciente();
+			p.setNome("Eduardo");
+			p.setSobrenome("Noah Marcos Cavalcanti");
+			p.setCpf("977.581.726-95");
+			p.setDtNascimento(new Date());
+			p.setEmail("eduardo_cavalcanti@viasegbrasil.com.br");
+			p.setSexo("M");
+			p.setCep("02990-260");
+			p.setEstado("SP");
+			p.setCidade("São Paulo");
+			p.setLogradouro("Travessa Martinho de Haro");
+			p.setCelular("(11) 2965-9995");
+
 			especialidadeRepository.save(e);
 			especialidadeRepository.save(e2);
 			especialidadeRepository.save(e3);
@@ -129,6 +148,8 @@ public class MelhorConsultaSpringApplication {
 			gradeRepository.save(g);
 			gradeRepository.save(g2);
 			gradeRepository.save(g3);
+
+			pacienteRepository.save(p);
 
 		};
 	}

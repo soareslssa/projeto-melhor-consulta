@@ -1,11 +1,14 @@
 package com.soaresdev.melhorconsultaspring.service;
 
 import com.soaresdev.melhorconsultaspring.dominio.DominioSituacaoConsulta;
+import com.soaresdev.melhorconsultaspring.dto.ConsultaDTO;
 import com.soaresdev.melhorconsultaspring.dto.GradeHorarioDTO;
 import com.soaresdev.melhorconsultaspring.models.Consulta;
 import com.soaresdev.melhorconsultaspring.models.GradeConsulta;
+import com.soaresdev.melhorconsultaspring.models.Paciente;
 import com.soaresdev.melhorconsultaspring.repository.ConsultaRepository;
 import lombok.AllArgsConstructor;
+import org.hibernate.boot.archive.scan.spi.PackageInfoArchiveEntryHandler;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -14,6 +17,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +27,7 @@ public class ConsultaService {
 
     private final ConsultaRepository consultaRepository;
     private final GradeConsultaService gradeConsultaService;
+    private final PacienteService pacienteService;
 
     public void gerarConsultasPorDia(GradeHorarioDTO gradeHorarioDTO) {
         String inicio = "08";
@@ -60,5 +65,21 @@ public class ConsultaService {
 
     public List<Consulta> findAllByMedicoGradeSituacao(Long medId, Long gradeId, String sitCodigo) {
         return consultaRepository.findAllByMedicoGradeSituacao(medId, gradeId, sitCodigo);
+    }
+
+    public void agendarConsulta(ConsultaDTO dto) {
+        Consulta consulta = consultaRepository.findConsultaById(dto.getId());
+        Paciente paciente = pacienteService.obterPacientePorId(dto.getPacienteId());
+        consulta.setSituacao(dto.getSituacao());
+        consulta.setPaciente(paciente);
+        consultaRepository.save(consulta);
+
+        ArrayList<Consulta> list = new ArrayList<>();
+        list.add(consulta);
+
+        paciente.setHorarioConsultas(list);
+        pacienteService.save(paciente);
+
+
     }
 }

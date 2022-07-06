@@ -8,3 +8,10 @@ export interface Consulta{
   dtMarcacao: string,
   situacao: string
 }
+
+export interface ConsultaRequest{
+  id?: number,
+  gradeId: number,
+  pacienteId: number,
+  situacao: string
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { EspecialidadesService } from 'src/app/modules/especialidades/services/especialidades.service';
@@ -55,8 +55,8 @@ export class ManterGradesComponent implements OnInit {
     this.form = this.fb.group({
       id: this.fb.control(null),
       medicoId: this.fb.control(4),
-      espId: this.fb.control(''),
-      valor: this.fb.control(0.00)
+      espId: this.fb.control('').setValidators(Validators.required),
+      valor: this.fb.control(0.00).setValidators(Validators.required)
     });
   }
 
@@ -66,7 +66,9 @@ export class ManterGradesComponent implements OnInit {
       () => {
         this.listarGrades();
         this.initForm();
-      }
+        this.showMessage("Grade cadastrada com sucesso!");
+      },
+      error => (this.showError("Erro ao cadastrar grade!"))
     );
   }
 
@@ -83,7 +85,7 @@ export class ManterGradesComponent implements OnInit {
   gerarHorariosDeAgendamento() {
 
     let horarios = {} as GradeHorarioRequest;
-    horarios.datasDisponiveis = ['11-07-22', '12-07-22', '13-07-22', '14-07-22'];
+    horarios.datasDisponiveis = ['11-07-22', '12-07-22'];
     horarios.gradeId = this.gradeSelecionada.id;
     horarios.espId = this.gradeSelecionada.especialidade.id;
 

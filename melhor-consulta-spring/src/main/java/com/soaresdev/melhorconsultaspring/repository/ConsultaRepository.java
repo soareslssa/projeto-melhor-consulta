@@ -15,4 +15,6 @@ public interface ConsultaRepository extends JpaRepository<Consulta, Long> {
 
     @Query("SELECT  c FROM Consulta c JOIN c.medico m JOIN c.gradeConsulta g WHERE m.id = :medId and (:gradeId is null or g.id = :gradeId) and (:sitCodigo is null or c.situacao = :sitCodigo)")
     List<Consulta> findAllByMedicoGradeSituacao(@Param("medId") Long medId, @Param("gradeId") Long gradeId, @Param("sitCodigo") String sitCodigo);
+
+    Consulta findConsultaById(@Param("id") Long id);
 }

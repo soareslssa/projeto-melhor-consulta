@@ -1,5 +1,6 @@
 package com.soaresdev.melhorconsultaspring.controller;
 
+import com.soaresdev.melhorconsultaspring.dto.ConsultaDTO;
 import com.soaresdev.melhorconsultaspring.dto.GradeHorarioDTO;
 import com.soaresdev.melhorconsultaspring.models.Consulta;
 import com.soaresdev.melhorconsultaspring.repository.ConsultaRepository;
@@ -41,5 +42,10 @@ public class ConsultaController {
     @PostMapping("/horarios/gerar")
     public void gerarHorariosPorEspecialidade(@RequestBody GradeHorarioDTO dto) {
         consultaService.gerarConsultasPorDia(dto);
+    }
+
+    @PostMapping
+    public void agendarConsulta(@RequestBody ConsultaDTO dto){
+        consultaService.agendarConsulta(dto);
     }
 }

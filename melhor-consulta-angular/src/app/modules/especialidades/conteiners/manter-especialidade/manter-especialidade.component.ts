@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { Especialidade } from 'src/app/models/especialidade';
 import { EspecialidadesService } from '../../services/especialidades.service';
 import { EspecialidadeRequest } from './../../../../models/especialidade';
@@ -18,7 +18,7 @@ export class ManterEspecialidadeComponent implements OnInit {
   edicao: boolean = false;
 
   constructor(private fb: FormBuilder, private especialidadeService: EspecialidadesService,
-    private router: Router, private confirmationService: ConfirmationService) {
+    private router: Router, private confirmationService: ConfirmationService, private toast: MessageService) {
 
     this.limparCampos(fb);
   }
@@ -26,8 +26,8 @@ export class ManterEspecialidadeComponent implements OnInit {
   private limparCampos(fb: FormBuilder) {
     this._form = fb.group({
       id: fb.control(null),
-      sigla: fb.control(''),
-      descricao: fb.control(''),
+      sigla: fb.control('').setValidators(Validators.required),
+      descricao: fb.control('').setValidators(Validators.required),
       situacao: fb.control(true),
       medico: fb.control('')
     });
@@ -39,11 +39,13 @@ export class ManterEspecialidadeComponent implements OnInit {
       this.especialidadeService.update(especialidade)
       .subscribe(data => {
         this.reiniciar();
+        this.showMessage("Especialidade atualizada com sucesso!");
       })
     } else {
     this.especialidadeService.add(especialidade)
       .subscribe(data => {
         this.reiniciar();
+        this.showMessage("Especialidade cadastrada com sucesso!");
       });
     }
   }
@@ -86,6 +88,11 @@ export class ManterEspecialidadeComponent implements OnInit {
       this.especialidades = data
     });
   }
+
+  showMessage(msg: string){
+    this.toast.add({severity: 'success', detail: msg})
+  }
+
 
 
 

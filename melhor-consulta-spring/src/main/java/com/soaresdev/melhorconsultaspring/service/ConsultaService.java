@@ -63,8 +63,8 @@ public class ConsultaService {
     }
 
 
-    public List<Consulta> findAllByMedicoGradeSituacao(Long medId, Long gradeId, String sitCodigo) {
-        return consultaRepository.findAllByMedicoGradeSituacao(medId, gradeId, sitCodigo);
+    public List<Consulta> findAllByMedicoGradeSituacao(Long medId, Long gradeId) {
+        return consultaRepository.findAllByMedicoGradeSituacao(medId, gradeId);
     }
 
     public void agendarConsulta(ConsultaDTO dto) {
@@ -73,13 +73,9 @@ public class ConsultaService {
         consulta.setSituacao(dto.getSituacao());
         consulta.setPaciente(paciente);
         consultaRepository.save(consulta);
+    }
 
-        ArrayList<Consulta> list = new ArrayList<>();
-        list.add(consulta);
-
-        paciente.setHorarioConsultas(list);
-        pacienteService.save(paciente);
-
-
+    public List<Consulta> listarConsultasLivresPorMedicoGrade(Long medId, Long gradeId) {
+        return consultaRepository.listarConsultasLivresPorMedicoGrade(medId, gradeId);
     }
 }

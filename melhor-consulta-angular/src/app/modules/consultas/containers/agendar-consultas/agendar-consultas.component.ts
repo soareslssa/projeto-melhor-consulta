@@ -20,7 +20,7 @@ export class AgendarConsultasComponent implements OnInit {
   ngOnInit(): void { }
 
   listarConsultasParaAgendamento(grade: GradeConsulta) {
-    this.consultasService.listAllByMedicoGradeSituacao(grade.medico.id, grade.id, 'L').subscribe(
+    this.consultasService.listarConsultasLivresPorMedicoGrade(grade.medico.id, grade.id).subscribe(
       data => { this.consultas = data }
     );
   }

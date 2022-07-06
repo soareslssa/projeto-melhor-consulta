@@ -21,14 +21,21 @@ export class ConsultasService {
     return this.httpClient.delete(`${this.API}?id=${id}`);
   }
 
-  listAllByMedicoGradeSituacao(mediId: number, gradeId: number, sitCodigo: string): Observable<Consulta[]> {
+  listAllByMedicoGradeSituacao(medId: number, gradeId: number): Observable<Consulta[]> {
 
     let params = new HttpParams()
-      .append('medId', mediId)
-      .append('gradeId', gradeId || null)
-      .append('sitCodigo', sitCodigo || null);
+      .append('medId', medId)
+      .append('gradeId', gradeId || null);
 
-    return this.httpClient.get<Consulta[]>(`${this.API}/findAllByMedicoGradeSituacao`, { params: params });
+    return this.httpClient.get<Consulta[]>(`${this.API}/findAllByMedicoGrade`, { params: params });
+  }
+
+  listarConsultasLivresPorMedicoGrade(medId: number, gradeId: number): Observable<Consulta[]> {
+    let params = new HttpParams()
+    .append('medId', medId)
+    .append('gradeId', gradeId || null);
+
+  return this.httpClient.get<Consulta[]>(`${this.API}/livres`, { params: params });
   }
 
   gerarHorarios(gradeHorario: GradeHorarioRequest): Observable<void>{

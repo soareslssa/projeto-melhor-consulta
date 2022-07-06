@@ -34,9 +34,14 @@ public class ConsultaController {
         consultaRepository.deleteById(id);
     }
 
-    @GetMapping("/findAllByMedicoGradeSituacao")
-    public List<Consulta> findAllByMedicoGradeSituacao(@RequestParam("medId") Long medId, @RequestParam(value = "gradeId", required = false) Long gradeId, @RequestParam(value = "sitCodigo", required = false) String sitCodigo) {
-        return consultaService.findAllByMedicoGradeSituacao(medId, gradeId, sitCodigo);
+    @GetMapping("/findAllByMedicoGrade")
+    public List<Consulta> findAllByMedicoGradeSituacao(@RequestParam("medId") Long medId, @RequestParam(value = "gradeId", required = false) Long gradeId) {
+        return consultaService.findAllByMedicoGradeSituacao(medId, gradeId);
+    }
+
+    @GetMapping("/livres")
+    public List<Consulta> listarConsultasLivresPorMedicoGrade(@RequestParam("medId") Long medId, @RequestParam("gradeId") Long gradeId){
+        return consultaService.listarConsultasLivresPorMedicoGrade(medId, gradeId);
     }
 
     @PostMapping("/horarios/gerar")

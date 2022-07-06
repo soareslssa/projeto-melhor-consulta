@@ -1,6 +1,8 @@
 package com.soaresdev.melhorconsultaspring.models;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +33,8 @@ public class Paciente {
     private String estado;
     @OneToMany
     private List<Consulta> horarioConsultas;
+
+
 
 
 }

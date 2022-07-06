@@ -25,7 +25,7 @@ export class ManterConsultasComponent implements OnInit {
   }
 
   pesquisarConsultasPorGrade(gradeId: number) {
-    this.consultasService.listAllByMedicoGradeSituacao(4, gradeId, 'L')
+    this.consultasService.listAllByMedicoGradeSituacao(4, gradeId)
       .subscribe(data => this.consultas = data);
   }
 
